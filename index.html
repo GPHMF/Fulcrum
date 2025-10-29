@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Provider Wellness Resource Center</title>
+	<link rel="icon" type="image/png" href="src/favicon_light.jpg" id="favicon">
+    <link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M16 2L16 30M2 16L30 16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span>HealthPro Wellness</span>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-link" data-section="home">Home</button>
+                <button class="nav-link" data-section="crisis">Crisis Resources</button>
+                <button class="nav-link" data-section="organizational">Organizational Strategies</button>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </nav>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+<div class="mobile-menu">
+        <button class="mobile-nav-link" data-section="home">Home</button>
+        <button class="mobile-nav-link" data-section="crisis">Crisis Resources</button>
+        <button class="mobile-nav-link" data-section="organizational">Organizational Strategies</button>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Healthcare Provider Wellness Resource Center</h1>
+                <p class="hero-subtitle">Evidence-based guidance to support the health and well-being of those who care for others</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">63%</div>
+                        <div class="stat-label">Physicians report burnout</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">46%</div>
+                        <div class="stat-label">Healthcare workers burned out</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2x</div>
+                        <div class="stat-label">Physician suicide rate vs general population</div>
+                    </div>
+                </div>
+            </div>
+            <img src="src/hero.jpg" class="hero-image" alt="Group of diverse healthcare professionals smiling and talking in a hospital lobby.">
+        </div>
+    </section>
+
+    <div class="crisis-banner">
+        <div class="crisis-banner-content">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span><strong>Crisis Support Available 24/7:</strong> Call or text 988 | Text FRONTLINE to 741741</span>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search wellness resources...">
+          <div id="searchResults" class="search-results hidden"></div>
+      </div>
+	</div>
+
+    <section class="provider-selection" id="provider-select">
+        <h2>Select Your Provider Role</h2>
+        <div class="provider-grid">
+            <button class="provider-card" data-provider="physicians">
+                <div class="provider-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3>Physicians</h3>
+                <p>Comprehensive support for medical doctors</p>
+                <img src="src/doctor.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+            </button>
+			<button class="provider-card" data-provider="trainees">
+				<div class="provider-icon">
+					<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+						<path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+						<path d="M6 12v5c3 3 9 3 12 0v-5"/>
+					</svg>
+				</div>
+				<h3>Residents & Medical Students</h3>
+				<p>Specialized resources for trainees navigating medical education</p>
+				<img src="src/resident.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+			</button>
+            <button class="provider-card" data-provider="nurse_practitioners">
+                <div class="provider-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                </div>
+                <h3>Nurse Practitioners</h3>
+                <p>Specialized guidance for advanced practice nurses</p>
+                <img src="src/NP.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+            </button>
+            <button class="provider-card" data-provider="physician_assistants">
+                <div class="provider-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3>Physician Assistants</h3>
+                <p>Wellness strategies for PAs across specialties</p>
+                <img src="src/PA.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+            </button>
+            <button class="provider-card" data-provider="nurses">
+                <div class="provider-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+                <h3>Nurses</h3>
+                <p>Resources for registered nurses and nursing staff</p>
+                <img src="src/nurse.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+            </button>
+			<button class="provider-card" data-provider="pharmacists">
+				<div class="provider-icon">
+					<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+						<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+						<line x1="3" y1="9" x2="21" y2="9"/>
+						<line x1="9" y1="21" x2="9" y2="9"/>
+					</svg>
+				</div>
+				<h3>Pharmacists</h3>
+				<p>Wellness strategies for retail, clinical, and hospital pharmacists</p>
+				<img src="src/pharmacist.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+			</button>
+			<button class="provider-card" data-provider="therapists">
+				<div class="provider-icon">
+					<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+						<circle cx="12" cy="12" r="3"/>
+						<path d="M12 1v6m0 6v6"/>
+						<path d="M17 7l-5 5m0 0l-5-5m5 5l5 5m-5-5l-5 5"/>
+					</svg>
+				</div>
+				<h3>Therapists (PT, OT, RT)</h3>
+				<p>Support for physical, occupational, and respiratory therapists</p>
+				<img src="src/therapist.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+			</button>
+			<button class="provider-card" data-provider="medical_assistants_pcts">
+				<div class="provider-icon">
+					<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+						<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+						<circle cx="9" cy="7" r="4"/>
+						<polyline points="17 11 19 13 23 9"/>
+					</svg>
+				</div>
+				<h3>Medical Assistants & PCTs</h3>
+				<p>Essential resources for medical assistants and patient care technicians</p>
+				<img src="src/MA.jpg" class="provider-image" alt="">
+                <span class="btn btn--primary">Explore Resources</span>
+			</button>
+        </div>
+    </section>
+
+    <section id="provider-detail" class="provider-detail hidden">
+        <div class="back-navigation">
+            <button id="backButton" class="btn btn--secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Provider Selection
+            </button>
+        </div>
+
+        <h2 id="providerTitle"></h2>
+
+        <div class="health-category-nav">
+            <button class="category-tab active" data-category="mental">Mental Health</button>
+            <button class="category-tab" data-category="physical">Physical Health</button>
+			<button class="category-tab" data-category="resources">Resources</button>
+        </div>
+
+        <div id="mental-health-content" class="health-content">
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3>Key Stressors</h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <ul id="stressors-list" class="content-list"></ul>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3>Evidence-Based Strategies</h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <ul id="strategies-list" class="content-list"></ul>
+                </div>
+            </div>
+			
+			<div class="guide-section-wrapper"></div>
+			
+			<div class="statistics-section">
+				<h3>Key Statistics</h3>
+				<div class="stats-grid">
+				</div>
+			</div>
+
+        </div>
+
+        <div id="physical-health-content" class="health-content hidden">
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3>Focus Areas</h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <ul id="focus-areas-list" class="content-list"></ul>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3>Key Implementation Points</h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                    </div>
+                    <ul id="key-points-list" class="content-list"></ul>
+                </div>
+            </div>
+
+            <div class="physical-health-stats">
+                <h3>Important Statistics</h3>
+                <div class="stats-grid">
+                    </div>
+            </div>
+
+        </div>
+		
+		<div id="resources-content" class="health-content hidden">
+        </div>
+	  
+    </section>
+	
+
+
+    <section id="crisis" class="crisis-section hidden">
+        <h2>Immediate Crisis Resources</h2>
+        <p class="section-subtitle">If you or someone you know is in crisis, help is available 24/7</p>
+        
+        <div class="crisis-cards">
+            <div class="crisis-card emergency">
+                <div class="crisis-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </div>
+                <h3>988 Suicide &amp; Crisis Lifeline</h3>
+                <p class="crisis-contact">Call or text <strong>988</strong></p>
+                <p>24/7 free confidential support for people in distress, prevention and crisis resources</p>
+            </div>
+
+            <div class="crisis-card">
+                <div class="crisis-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <h3>Crisis Text Line</h3>
+                <p class="crisis-contact">Text <strong>HOME</strong> to <strong>741741</strong></p>
+                <p>Connect with a trained crisis counselor via text message, available 24/7</p>
+            </div>
+
+            <div class="crisis-card highlighted">
+                <div class="crisis-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+                <h3>For the Frontlines</h3>
+                <p class="crisis-contact">Text <strong>FRONTLINE</strong> to <strong>741741</strong></p>
+                <p>Crisis counseling specifically for healthcare professionals and first responders</p>
+            </div>
+
+            <div class="crisis-card">
+                <div class="crisis-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3>Physician Support Line</h3>
+                <p class="crisis-contact">Call <strong>1-888-409-0141</strong></p>
+                <p>Confidential support line staffed by volunteer psychiatrists for physicians</p>
+            </div>
+
+            <div class="crisis-card">
+                <div class="crisis-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <h3>SAMHSA Disaster Distress Helpline</h3>
+                <p class="crisis-contact">Call <strong>1-800-985-5990</strong></p>
+                <p>Crisis counseling and support for those experiencing distress related to disasters</p>
+            </div>
+
+            <div class="crisis-card">
+                <div class="crisis-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3>Magellan Health Helpline</h3>
+                <p class="crisis-contact">Call <strong>1-800-327-7451</strong></p>
+                <p>Mental health support and resources for healthcare professionals</p>
+            </div>
+        </div>
+	</div>
+    </section>
+
+    <section id="organizational" class="organizational-section hidden">
+        <h2>Organizational Strategies for Healthcare Leaders</h2>
+        <p class="section-subtitle">Evidence-based approaches to improve provider wellness at the systems level</p>
+
+        <div class="org-categories">
+            <div class="org-category">
+                <div class="org-category-header" data-toggle="admin-burden">
+                    <div class="org-category-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <h3>Reducing Administrative Burden</h3>
+                    </div>
+                    <svg class="toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div id="admin-burden" class="org-category-content">
+                    <ul class="strategy-list">
+                        <li>
+                            <strong>Implement team documentation models</strong>
+                            <p>Distribute documentation tasks among care team members to reduce individual burden</p>
+                        </li>
+                        <li>
+                            <strong>Use AI-powered ambient scribes</strong>
+                            <p>Leverage technology to automate clinical documentation and reduce EHR time</p>
+                        </li>
+                        <li>
+                            <strong>Streamline prior authorization</strong>
+                            <p>Simplify approval processes and reduce administrative obstacles to patient care</p>
+                        </li>
+                        <li>
+                            <strong>Deploy intelligent medication refill protocols</strong>
+                            <p>Automate routine medication renewals within established guidelines</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="org-category">
+                <div class="org-category-header" data-toggle="work-environment">
+                    <div class="org-category-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <h3>Optimizing Work Environment</h3>
+                    </div>
+                    <svg class="toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div id="work-environment" class="org-category-content is-collapsed">
+                    <ul class="strategy-list">
+                        <li>
+                            <strong>Ensure safe staffing ratios</strong>
+                            <p>Maintain adequate provider-to-patient ratios to prevent overwork and burnout</p>
+                        </li>
+                        <li>
+                            <strong>Promote schedule flexibility</strong>
+                            <p>Allow providers input in scheduling and support work-life balance</p>
+                        </li>
+                        <li>
+                            <strong>Institute real PTO policies</strong>
+                            <p>Ensure time off is genuinely protected and free from work intrusion</p>
+                        </li>
+                        <li>
+                            <strong>Create psychological safety culture</strong>
+                            <p>Foster an environment where providers feel safe to speak up and seek help</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="org-category">
+                <div class="org-category-header" data-toggle="leadership">
+                    <div class="org-category-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <h3>Leadership &amp; Culture Change</h3>
+                    </div>
+                    <svg class="toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div id="leadership" class="org-category-content is-collapsed">
+                    <ul class="strategy-list">
+                        <li>
+                            <strong>Appoint Chief Wellness Officer</strong>
+                            <p>Designate dedicated leadership role responsible for provider well-being initiatives</p>
+                        </li>
+                        <li>
+                            <strong>Normalize mental health conversations</strong>
+                            <p>Reduce stigma by openly discussing mental health and making resources accessible</p>
+                        </li>
+                        <li>
+                            <strong>Establish peer support programs</strong>
+                            <p>Create structured programs for providers to support one another</p>
+                        </li>
+                        <li>
+                            <strong>Lead by example</strong>
+                            <p>Leadership must model healthy work-life balance and self-care practices</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="statistics-section">
+          <h3>Organizational Impact Metrics</h3>
+		  <div class="stats-grid">
+		    <div class="stat-box">
+              <div class="stat-value">25%</div>
+              <div class="stat-description">Reduction in burnout with team documentation</div>
+              <div class="stat-source">Source: JAMA</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">30%</div>
+              <div class="stat-description">Increase in wellness from schedule flexibility</div>
+              <div class="stat-source">Source: NEJM</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">40%</div>
+              <div class="stat-description">Lower turnover with peer support programs</div>
+              <div class="stat-source">Source: Health Affairs</div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About This Resource</h4>
+                <p>This comprehensive guide is designed to support healthcare providers in maintaining their mental and physical health. All recommendations are evidence-based and regularly updated.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#crisis">Crisis Resources</a></li>
+                    <li><a href="#organizational">Organizational Strategies</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Emergency Support</h4>
+                <p><strong>988</strong> - Suicide &amp; Crisis Lifeline</p>
+                <p><strong>FRONTLINE to 741741</strong> - Healthcare Worker Support</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Healthcare Provider Wellness Resource Center. For educational purposes. Always consult with healthcare professionals for medical advice.</p>
+        </div>
+    </footer>
+    </main>
+
+</body>
+</html>
