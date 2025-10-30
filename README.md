@@ -107,6 +107,7 @@ Pull requests for bug fixes and feature enhancements are also welcome. Please op
 - [ ] Add more provider-specific statistics
 - [ ] Add print-friendly versions of resources
 - [ ] Multi-language support
+- [ ] Add diagrams and images to improve visual appeal
 
 ---
 
@@ -127,3 +128,4 @@ For questions or feedback about this project, please [open an issue](https://git
 ---
 
 Built with ❤️ for healthcare providers everywhere.
+
