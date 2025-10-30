@@ -11,7 +11,7 @@
 
 ## Healthcare's Pivot Point
 
-**Live Site:** [[**https://gphmf.github.io/Fulcrum**](https://gphmf.github.io/Fulcrum)](https://gphmf.github.io/Fulcrum)
+**Live Site:** [**https://gphmf.github.io/Fulcrum**](https://gphmf.github.io/Fulcrum)
 
 ---
 
