@@ -1,0 +1,1447 @@
+{
+  "title": "Immediate Crisis Resources & Support",
+  "subtitle": "If you or someone you know is in crisis, help is available 24/7",
+  "version": "2.0",
+  "last_updated": "2025-11-01",
+  "introduction": "<div class=\"crisis-intro\"><h4>If you or someone you know is in crisis, help is available 24/7</h4><p class=\"urgent-message\">You are not alone. <strong>Crisis support is confidential, free, and always available.</strong> These resources are specifically designed to support healthcare professionals facing emotional distress, burnout, or crisis situations. Seeking help will not impact your professional standing or licensure.</p></div>",
+  "resourceCategories": [
+    {
+      "id": "primary_emergency",
+      "name": "Primary Emergency Resources",
+      "description": "Immediate 24/7 crisis support for acute distress",
+      "icon": "alert-circle",
+      "color_accent": "red",
+      "priority": 1,
+      "resource_count": 7
+    },
+    {
+      "id": "specialized_provider",
+      "name": "Specialized Healthcare Provider Resources",
+      "description": "Crisis support tailored to specific healthcare professions",
+      "icon": "stethoscope",
+      "color_accent": "teal",
+      "priority": 2,
+      "resource_count": 6
+    },
+    {
+      "id": "regional_state",
+      "name": "Regional & State-Based Resources",
+      "description": "State-specific physician health programs and mental health hotlines",
+      "icon": "map-pin",
+      "color_accent": "orange",
+      "priority": 3,
+      "resource_count": 6
+    },
+    {
+      "id": "peer_support",
+      "name": "Peer Support & Community Resources",
+      "description": "Peer support networks, support groups, and online communities",
+      "icon": "users",
+      "color_accent": "green",
+      "priority": 4,
+      "resource_count": 5
+    },
+    {
+      "id": "workplace",
+      "name": "Workplace & Institutional Resources",
+      "description": "Employee assistance programs and institutional mental health services",
+      "icon": "briefcase",
+      "color_accent": "blue",
+      "priority": 5,
+      "resource_count": 3
+    }
+  ],
+  "quickAccessGuides": [
+    {
+      "id": "suicidal_ideation",
+      "title": "If You're Having Thoughts of Suicide",
+      "urgency": "critical",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Reach out immediately",
+          "description": "Call 988 or text HOME to 741741 right now. Do not wait. Thoughts of suicide are treatable.",
+          "resources": [
+            "988-lifeline",
+            "crisis-text-line"
+          ]
+        },
+        {
+          "step": 2,
+          "action": "Tell someone you trust",
+          "description": "Contact a family member, close friend, colleague, or healthcare provider. Your life matters and people want to help.",
+          "resources": [
+            "frontline",
+            "physician-support-line"
+          ]
+        },
+        {
+          "step": 3,
+          "action": "If in immediate danger",
+          "description": "Call 911 or go to your nearest emergency room. This is a medical emergency requiring immediate evaluation.",
+          "resources": []
+        },
+        {
+          "step": 4,
+          "action": "Make a safety plan",
+          "description": "Work with a counselor to identify warning signs and coping strategies. Remove access to means of self-harm.",
+          "resources": [
+            "samhsa-national-helpline",
+            "nami-helpline"
+          ]
+        }
+      ],
+      "do_and_dont": {
+        "do": [
+          "Talk about your feelings - silence makes depression worse",
+          "Keep taking medications as prescribed",
+          "Reach out to someone you trust",
+          "Stay in contact with mental health providers",
+          "Use crisis resources immediately if thoughts intensify",
+          "Give yourself time - recovery takes work but is absolutely possible"
+        ],
+        "dont": [
+          "Isolate yourself - isolation amplifies depression",
+          "Stop medications without talking to your doctor",
+          "Consume alcohol or use drugs to cope",
+          "Stay in triggering situations without support",
+          "Minimize how you're feeling or tough it out alone",
+          "Believe that this will always feel this way - it won't"
+        ]
+      }
+    },
+    {
+      "id": "burnout_crisis",
+      "title": "If You're Experiencing Severe Burnout or Crisis",
+      "urgency": "high",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Name what you're experiencing",
+          "description": "Burnout, moral injury, compassion fatigue, and occupational stress are real medical conditions affecting your health. Naming it is the first step.",
+          "resources": [
+            "emotional-ppe-project"
+          ]
+        },
+        {
+          "step": 2,
+          "action": "Access immediate support",
+          "description": "Use For the Frontlines (text FRONTLINE to 741741) or your specialty's crisis resource (Physician Support Line, NNCC for nurses).",
+          "resources": [
+            "frontline",
+            "physician-support-line",
+            "save-nurses-crisis"
+          ]
+        },
+        {
+          "step": 3,
+          "action": "Connect with your EAP",
+          "description": "Most employers provide free, confidential counseling through Employee Assistance Programs. Check your benefits or ask HR.",
+          "resources": [
+            "eap-standard"
+          ]
+        },
+        {
+          "step": 4,
+          "action": "Seek peer support",
+          "description": "Join a peer support group or contact a colleague who understands. Feeling understood is therapeutic.",
+          "resources": [
+            "dont-clock-out",
+            "peer-rx-med",
+            "schwartz-rounds"
+          ]
+        }
+      ],
+      "do_and_dont": {
+        "do": [
+          "Recognize burnout as a system problem, not a personal failure",
+          "Set boundaries between work and home time",
+          "Reach out to colleagues or peer support groups",
+          "Consider taking time off or reducing hours if possible",
+          "Address what's most draining (workload, ethics, staffing)",
+          "Practice self-compassion - you deserve care too"
+        ],
+        "dont": [
+          "Expect to fix this alone - burnout is a system issue",
+          "Ignore warning signs or push harder",
+          "Isolate from colleagues or friends",
+          "Make major life decisions while in acute burnout",
+          "Feel ashamed - burnout happens to the best clinicians",
+          "Wait for things to improve on their own"
+        ]
+      }
+    },
+    {
+      "id": "moral_injury",
+      "title": "If You're Experiencing Moral Injury or Ethical Distress",
+      "urgency": "high",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Understand what you're feeling",
+          "description": "Moral injury occurs when you witness or are forced to participate in actions that violate your core values. This creates profound distress, shame, and guilt.",
+          "resources": []
+        },
+        {
+          "step": 2,
+          "action": "Reach out to someone who understands",
+          "description": "Moral injury is unique to healthcare. Seek providers trained in trauma and moral injury, or peer groups that specifically address healthcare ethics.",
+          "resources": [
+            "emotional-ppe-project",
+            "dr-lorna-breen-foundation"
+          ]
+        },
+        {
+          "step": 3,
+          "action": "Connect with advocacy",
+          "description": "If systemic issues caused the moral injury, connect with your institution's ethics committee or medical board advocacy. Your voice matters.",
+          "resources": [
+            "physician-support-line",
+            "nami-helpline"
+          ]
+        },
+        {
+          "step": 4,
+          "action": "Work with a trauma-informed therapist",
+          "description": "Cognitive therapy and trauma-focused approaches specifically help with moral injury. Therapists trained in healthcare provider trauma can help.",
+          "resources": [
+            "emotional-ppe-project",
+            "samhsa-national-helpline"
+          ]
+        }
+      ],
+      "do_and_dont": {
+        "do": [
+          "Name the specific values that were violated",
+          "Talk about the experience with someone who gets healthcare ethics",
+          "Consider therapy specifically designed for moral injury",
+          "Work toward internal forgiveness - you did your best in a broken system",
+          "Channel your distress into advocacy for change",
+          "Remember: the system failed you, not the reverse"
+        ],
+        "dont": [
+          "Internalize that you did something wrong when systems failed",
+          "Try to suppress or minimize the distress",
+          "Work with a therapist who doesn't understand healthcare context",
+          "Stay silent about systemic problems causing moral injury",
+          "Believe you're weak or inadequate for being affected",
+          "Isolate or blame yourself entirely"
+        ]
+      }
+    },
+    {
+      "id": "substance_use_crisis",
+      "title": "If You're Using Substances to Cope",
+      "urgency": "high",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Reach out confidentially",
+          "description": "Call SAMHSA National Helpline (1-800-662-4357) or your state Physician Health Program. This is not a moral failing - it's a medical condition.",
+          "resources": [
+            "samhsa-national-helpline",
+            "php-directory"
+          ]
+        },
+        {
+          "step": 2,
+          "action": "Get a confidential assessment",
+          "description": "A trained professional can assess your substance use and recommend treatment. Many options are available and evidence-based.",
+          "resources": [
+            "samhsa-national-helpline",
+            "emotional-ppe-project"
+          ]
+        },
+        {
+          "step": 3,
+          "action": "Access treatment",
+          "description": "Treatment options range from outpatient counseling to inpatient programs. Your EAP or insurance can help coordinate care.",
+          "resources": [
+            "eap-standard",
+            "php-directory"
+          ]
+        },
+        {
+          "step": 4,
+          "action": "Join recovery support",
+          "description": "Peer support in recovery is crucial. AA, NA, SMART Recovery, and healthcare-specific groups offer community and accountability.",
+          "resources": [
+            "peer-rx-med",
+            "online-hcp-community"
+          ]
+        }
+      ],
+      "do_and_dont": {
+        "do": [
+          "Reach out - substance use issues are medical, treatable conditions",
+          "Be honest about your use with healthcare providers",
+          "Access confidential state programs (PHPs) designed to protect your license",
+          "Build accountability with peers in recovery",
+          "Address underlying trauma or burnout driving the use",
+          "Develop new coping strategies with professional support"
+        ],
+        "dont": [
+          "Try to manage this alone - recovery needs support",
+          "Delay seeking help hoping it goes away",
+          "Minimize your use or hide it from providers",
+          "Self-report to your medical board without legal/program guidance first",
+          "Give up on recovery - long-term remission is possible",
+          "Lose hope - many healthcare providers are in recovery"
+        ]
+      }
+    },
+    {
+      "id": "helping_colleague",
+      "title": "If You're Concerned About a Colleague in Crisis",
+      "urgency": "high",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Take it seriously",
+          "description": "If a colleague mentions suicidal thoughts, substance use, or severe distress, take it at face value. Don't assume they're just venting.",
+          "resources": []
+        },
+        {
+          "step": 2,
+          "action": "Listen and ask directly",
+          "description": "Ask 'Are you thinking of harming yourself?' directly. Research shows asking doesn't increase risk - it can save lives. Listen without judgment.",
+          "resources": []
+        },
+        {
+          "step": 3,
+          "action": "Connect them to resources",
+          "description": "Suggest specific resources (988, Physician Support Line, For the Frontlines) or offer to help them call. Don't try to be their therapist.",
+          "resources": [
+            "988-lifeline",
+            "physician-support-line",
+            "frontline"
+          ]
+        },
+        {
+          "step": 4,
+          "action": "Know when to escalate",
+          "description": "If they're in immediate danger, call 911. If safety isn't imminent, help connect them to professional support.",
+          "resources": [
+            "eap-standard",
+            "emotional-ppe-project"
+          ]
+        }
+      ],
+      "do_and_dont": {
+        "do": [
+          "Take mental health concerns seriously",
+          "Ask directly about suicidal thoughts if you're concerned",
+          "Listen compassionately without trying to fix it",
+          "Help them access professional resources",
+          "Follow up after the crisis - recovery takes time",
+          "Take care of your own mental health too"
+        ],
+        "dont": [
+          "Ignore warning signs thinking it will pass",
+          "Assume they'll reach out if it's serious",
+          "Try to be their therapist or counselor",
+          "Share their crisis information without permission",
+          "Minimize their feelings or tell them to 'toughen up'",
+          "Take responsibility for their recovery - that's their job with professionals"
+        ]
+      }
+    }
+  ],
+  "supportedProviderGuides": [
+    {
+      "id": "physicians_guide",
+      "provider_type": "physicians",
+      "title": "Crisis Resources for Physicians",
+      "key_challenges": [
+        "Moral injury from systemic healthcare failures",
+        "Perfectionism and self-criticism",
+        "Licensure and credentialing concerns",
+        "Professional isolation and stigma",
+        "Burnout from EHR burden and administrative tasks",
+        "Imposter syndrome and high stakes decision-making"
+      ],
+      "recommended_resources": [
+        "physician-support-line",
+        "php-directory",
+        "emotional-ppe-project",
+        "peer-rx-med",
+        "dr-lorna-breen-foundation"
+      ],
+      "specific_guidance": "Physicians often face unique barriers: fear of licensure consequences, perfectionism, and professional identity deeply intertwined with self-worth. The Physician Support Line is staffed by psychiatrists who understand these pressures. State PHPs are completely separate from licensing boards and provide confidential support. Know that 37 state medical boards and 600+ hospitals now have best-practice standards protecting physicians seeking mental health care."
+    },
+    {
+      "id": "nurses_guide",
+      "provider_type": "nurses",
+      "title": "Crisis Resources for Nurses",
+      "key_challenges": [
+        "Severe burnout from understaffing and high patient ratios",
+        "Moral distress from rationing care",
+        "Lateral violence and workplace bullying",
+        "Physical exhaustion and shift-related health issues",
+        "Inadequate mental health support recognition",
+        "Moral injury from witnessing patient suffering"
+      ],
+      "recommended_resources": [
+        "save-nurses-crisis",
+        "frontline",
+        "988-lifeline",
+        "dont-clock-out",
+        "emotional-ppe-project"
+      ],
+      "specific_guidance": "Nurses uniquely experience burnout from systemic understaffing and moral distress. The National Nurses Crisis Center provides 24/7 AI-powered support designed for nurses' specific challenges. For the Frontlines is specifically for healthcare workers. Many nurses hesitate to seek help due to stigma; remember that seeking support is an act of strength and self-care, not weakness."
+    },
+    {
+      "id": "pharmacists_guide",
+      "provider_type": "pharmacists",
+      "title": "Crisis Resources for Pharmacists",
+      "key_challenges": [
+        "Medication safety responsibility and fear of errors",
+        "Burnout from high volume and understaffing",
+        "Isolation in solo practice settings",
+        "Interfacing between patients and prescribers",
+        "Work-related stress and anxiety",
+        "Limited recognition of medication therapy expertise"
+      ],
+      "recommended_resources": [
+        "frontline",
+        "988-lifeline",
+        "eap-standard",
+        "dont-clock-out",
+        "emotional-ppe-project"
+      ],
+      "specific_guidance": "Pharmacists often work in isolated settings with high stakes around medication safety. Crisis resources including the 988 Lifeline, For the Frontlines, and EAPs are available. If your workplace offers Mental Health First Aid training (now available at reduced cost through many pharmacy associations), consider participating to build confidence in seeking help when needed."
+    },
+    {
+      "id": "therapists_guide",
+      "provider_type": "therapists",
+      "title": "Crisis Resources for Therapists & Counselors",
+      "key_challenges": [
+        "Moral injury from witnessing client suffering",
+        "Vicarious trauma and secondary trauma",
+        "Burnout from emotional labor",
+        "Compassion fatigue",
+        "Professional isolation",
+        "Difficulty finding non-judgmental peer support"
+      ],
+      "recommended_resources": [
+        "dont-clock-out",
+        "emotional-ppe-project",
+        "schwartz-rounds",
+        "988-lifeline",
+        "frontline"
+      ],
+      "specific_guidance": "Therapists and counselors experience unique trauma from supporting clients through crises. Your vicarious trauma is real and treatable. Seek supervision, consultation, and personal therapy with providers who understand therapist burnout. Don't Clock Out and Emotional PPE Project specifically support mental health professionals. Regular self-care and professional boundaries are essential prevention."
+    },
+    {
+      "id": "residents_guide",
+      "provider_type": "trainees",
+      "title": "Crisis Resources for Medical Residents & Trainees",
+      "key_challenges": [
+        "High stress during formative training years",
+        "Work hour restrictions impact education and fatigue",
+        "Financial stress and debt burden",
+        "Power imbalance with senior physicians",
+        "Sleep deprivation and its mental health impact",
+        "Fear of reporting concerns due to evaluations"
+      ],
+      "recommended_resources": [
+        "physician-support-line",
+        "emotional-ppe-project",
+        "eap-standard",
+        "988-lifeline",
+        "peer-rx-med"
+      ],
+      "specific_guidance": "Trainees face particular challenges: financial stress, hierarchical power dynamics, and fear that seeking help will impact evaluations. Know that your training program should have confidential mental health resources. The Physician Support Line welcomes medical students and residents. Many programs now have resident wellness consultants and peer support. Your program director and GME office can connect you with confidential resources."
+    },
+    {
+      "id": "medical_assistants_guide",
+      "provider_type": "medical_assistants",
+      "title": "Crisis Resources for Medical Assistants",
+      "key_challenges": [
+        "High patient contact volume with limited recognition",
+        "Emotional labor with vulnerable populations",
+        "Burnout from physical demands",
+        "Limited mental health benefits access",
+        "Pay-to-outcome disconnect",
+        "Systemic healthcare stress"
+      ],
+      "recommended_resources": [
+        "frontline",
+        "988-lifeline",
+        "crisis-text-line",
+        "eap-standard",
+        "dont-clock-out"
+      ],
+      "specific_guidance": "Medical assistants are often frontline healthcare workers experiencing high emotional and physical demands. 988 and For the Frontlines are designed for frontline workers. Many medical assisting roles include EAP benefits - ask your employer's HR department. You deserve mental health support and care, just as your patients do. Your well-being matters."
+    },
+    {
+      "id": "nurse_practitioners_guide",
+      "provider_type": "nurse_practitioners",
+      "title": "Crisis Resources for Nurse Practitioners",
+      "key_challenges": [
+        "Dual identity - nurse training plus provider role",
+        "Autonomy and prescriptive authority concerns",
+        "Burnout from complex patient loads",
+        "Transition stress into independent practice",
+        "Moral injury from system constraints",
+        "Limited NP-specific mental health resources"
+      ],
+      "recommended_resources": [
+        "save-nurses-crisis",
+        "physician-support-line",
+        "frontline",
+        "eap-standard",
+        "emotional-ppe-project"
+      ],
+      "specific_guidance": "NPs experience challenges from both nursing and medical perspectives. Many state medical boards now welcome NPs into state health programs (check your state PHP). For the Frontlines and the National Nurses Crisis Center both support NPs. Seek peer mentorship from NPs who have navigated similar challenges. Your unique training and perspective are valuable assets."
+    }
+  ],
+  "crisisIndicators": {
+    "critical": {
+      "level": "Seek immediate help NOW",
+      "color": "red",
+      "signs": [
+        "Active thoughts of suicide or self-harm",
+        "Detailed suicide plan or access to means",
+        "Expressing that others would be better off without you",
+        "Saying goodbye or putting affairs in order",
+        "Sudden mood changes from severe depression to unusual calm",
+        "Dangerous substance use or overdose risk",
+        "Severe panic or feeling completely out of control",
+        "Suicidal statements: 'I can't take this anymore' or 'I want to die'"
+      ],
+      "immediate_action": "Call 911 or 988 now. Go to nearest emergency room. Tell someone immediately."
+    },
+    "high": {
+      "level": "Reach out to resources today",
+      "color": "orange",
+      "signs": [
+        "Persistent thoughts of suicide (even without a plan)",
+        "Severe depression or hopelessness lasting days/weeks",
+        "Inability to work or perform basic self-care",
+        "Increased substance use or reckless behavior",
+        "Feeling trapped with no way out",
+        "Complete social withdrawal and isolation",
+        "Giving away possessions or making major decisions suddenly",
+        "Expressing feeling like a burden to others"
+      ],
+      "immediate_action": "Contact 988, your EAP, Physician Support Line, or go to urgent care/ED today."
+    },
+    "moderate": {
+      "level": "Consider accessing support this week",
+      "color": "yellow",
+      "signs": [
+        "Persistent sadness, anxiety, or irritability",
+        "Sleep changes (too much or too little)",
+        "Difficulty concentrating or making decisions",
+        "Loss of interest in activities you usually enjoy",
+        "Increased substance use to cope",
+        "Feeling overwhelmed at work",
+        "Relationship stress or conflict",
+        "Physical symptoms (headaches, fatigue, pain)"
+      ],
+      "immediate_action": "Contact your EAP, schedule with your therapist/doctor, or join a support group."
+    }
+  },
+  "resourceFilters": {
+    "filters": [
+      {
+        "name": "availability",
+        "label": "When do you need support?",
+        "options": [
+          "24/7",
+          "business hours",
+          "specific hours",
+          "scheduled groups"
+        ]
+      },
+      {
+        "name": "access_method",
+        "label": "How do you prefer to reach out?",
+        "options": [
+          "phone",
+          "text",
+          "chat",
+          "web",
+          "email",
+          "in-person"
+        ]
+      },
+      {
+        "name": "provider_type",
+        "label": "What's your healthcare role?",
+        "options": [
+          "nurses",
+          "physicians",
+          "pharmacists",
+          "therapists",
+          "medical_assistants",
+          "trainees",
+          "nurse_practitioners",
+          "any"
+        ]
+      },
+      {
+        "name": "cost",
+        "label": "What can you afford?",
+        "options": [
+          "free",
+          "sliding_scale",
+          "insurance_covered",
+          "any"
+        ]
+      },
+      {
+        "name": "situation",
+        "label": "What are you dealing with?",
+        "options": [
+          "suicide_risk",
+          "burnout",
+          "moral_injury",
+          "substance_use",
+          "colleague_concern",
+          "general_crisis"
+        ]
+      }
+    ]
+  },
+  "banner": {
+    "display": "persistent",
+    "html": "<div class=\"crisis-banner\"><span class=\"banner-icon\">\ud83d\udea8</span><strong>Crisis Support Available 24/7:</strong> <span class=\"contact-method\">Call or text <a href=\"tel:988\">988</a></span> | <span class=\"contact-method\">Text <strong>FRONTLINE</strong> to <a href=\"sms:741741\">741741</a></span></div>"
+  },
+  "detailedGuide": "<div class=\"detailed-guide\">\n    <h4>Understanding Healthcare Provider Mental Health Crises</h4>\n\n    <div class=\"guide-section\">\n      <h5>Different Types of Crisis</h5>\n      <p>Healthcare providers experience various types of mental health crises, each requiring specific support:</p>\n      <ul>\n        <li><strong>Acute Suicidal Crisis:</strong> Immediate thoughts of self-harm requiring emergency intervention (988, 911, ED)</li>\n        <li><strong>Burnout Crisis:</strong> Cumulative exhaustion from workload, moral distress, and systemic failures</li>\n        <li><strong>Moral Injury:</strong> Profound distress from witnessing or participating in actions violating core values</li>\n        <li><strong>Trauma Response:</strong> Acute or cumulative trauma from patient suffering, mass casualty events, or occupational exposure</li>\n        <li><strong>Substance Use Crisis:</strong> Escalating substance use as a coping mechanism (highly treatable through PHPs)</li>\n      </ul>\n    </div>\n\n    <div class=\"guide-section\">\n      <h5>Why Healthcare-Specific Resources Matter</h5>\n      <p>Healthcare professionals face <strong>unique stressors</strong> that general crisis lines may not fully understand:</p>\n      <table class=\"support-comparison\">\n        <tr>\n          <th>Challenge</th>\n          <th>Why It Matters</th>\n          <th>Specialized Response</th>\n        </tr>\n        <tr>\n          <td>Moral injury and ethical distress</td>\n          <td>Deep psychological impact when forced to violate values</td>\n          <td>Therapists trained in healthcare ethics and trauma-informed care</td>\n        </tr>\n        <tr>\n          <td>Professional identity and licensure concerns</td>\n          <td>Fear that seeking help threatens career and license</td>\n          <td>State PHPs, peer support from providers, confidentiality assurances</td>\n        </tr>\n        <tr>\n          <td>Compassion fatigue and burnout</td>\n          <td>Systemic healthcare stressors create cumulative exhaustion</td>\n          <td>Resources recognizing system-level problems, advocacy support</td>\n        </tr>\n        <tr>\n          <td>Perfectionism and stigma</td>\n          <td>Provider culture discourages vulnerability and help-seeking</td>\n          <td>Peer support from those in healthcare, normalizing mental health care</td>\n        </tr>\n      </table>\n    </div>\n\n    <div class=\"guide-section\">\n      <h5>When to Reach Out for Help</h5>\n      <p><strong>Do not wait.</strong> Reach out when:</p>\n      <ul>\n        <li>You're thinking about harming yourself - call 988 immediately</li>\n        <li>You feel hopeless or trapped for more than a few days</li>\n        <li>You're using substances to cope with stress</li>\n        <li>You can't perform your job or daily activities</li>\n        <li>You feel you're a burden to others</li>\n        <li>You're withdrawing from relationships and activities</li>\n        <li>Work-related ethical situations are causing severe distress</li>\n        <li>You recognize signs of crisis in a colleague</li>\n      </ul>\n    </div>\n\n    <div class=\"guide-section\">\n      <h5>Confidentiality & Legal Protections</h5>\n      <p>This is critical: <strong>Seeking mental health care will not automatically impact your license or career.</strong></p>\n      <ul>\n        <li><strong>State Physician Health Programs (PHPs):</strong> Completely separate from medical boards. PHPs maintain confidentiality and provide recovery support.</li>\n        <li><strong>988 Lifeline:</strong> Not reported to employers, licensing boards, or law enforcement. Completely anonymous if you wish.</li>\n        <li><strong>EAP Services:</strong> Separate from employer HR and medical records. Confidential by federal law.</li>\n        <li><strong>State Best Practices:</strong> 37 state medical boards and 600+ hospitals have removed stigmatizing questions about past mental health treatment on licensing/credentialing applications.</li>\n        <li><strong>Know Your State:</strong> Rules vary by state. Organizations like the Dr. Lorna Breen Foundation provide state-specific guidance.</li>\n      </ul>\n    </div>\n\n    <div class=\"guide-section\">\n      <h5>How to Help a Colleague in Crisis</h5>\n      <p>If you're concerned about a colleague:</p>\n      <ol>\n        <li><strong>Take it seriously.</strong> Don't minimize or assume they're just venting.</li>\n        <li><strong>Ask directly.</strong> Research shows asking about suicide doesn't increase risk\u2014it can save lives. 'Are you thinking about harming yourself?'</li>\n        <li><strong>Listen without judgment.</strong> Let them express their feelings. Don't try to fix it or minimize their experience.</li>\n        <li><strong>Share specific resources.</strong> Don't just say 'get help.' Provide specific numbers or websites.</li>\n        <li><strong>Help them reach out.</strong> Offer to call with them or sit with them while they text 988.</li>\n        <li><strong>Know when to escalate.</strong> If they're in immediate danger, call 911. If not, help connect to professional resources.</li>\n        <li><strong>Follow up.</strong> Recovery takes time. Check in after the crisis has passed.</li>\n        <li><strong>Take care of yourself.</strong> Supporting a colleague in crisis can affect your own mental health. Access support for yourself too.</li>\n      </ol>\n    </div>\n\n    <div class=\"guide-section\">\n      <h5>After the Crisis: Recovery & Next Steps</h5>\n      <p>Surviving a mental health crisis is the beginning, not the end. Recovery requires ongoing support:</p>\n      <ul>\n        <li><strong>Connect with ongoing therapy:</strong> Individual therapy helps process what happened and develop long-term coping strategies.</li>\n        <li><strong>Join peer support groups:</strong> Ongoing peer support from people who understand healthcare provider challenges is therapeutic and sustaining.</li>\n        <li><strong>Address underlying issues:</strong> Burnout, moral injury, and trauma require more than crisis intervention. Address root causes with professional help.</li>\n        <li><strong>Consider your work environment:</strong> If your workplace contributed to the crisis, consider changes: negotiating workload, seeking a different role, or transitioning to a healthier setting.</li>\n        <li><strong>Build resilience:</strong> Develop sustainable practices: exercise, sleep, relationships, boundaries, spirituality, hobbies, mentorship.</li>\n        <li><strong>Stay connected to Fulcrum resources:</strong> Use Fulcrum's provider wellness content to support ongoing mental health alongside crisis resources.</li>\n      </ul>\n    </div>\n\n    <div class=\"guide-section\">\n      <h5>Recovery is Possible</h5>\n      <p><strong>Your struggle does not define you.</strong> Many healthcare providers have faced crisis and recovered to live meaningful, fulfilling lives. Statistics show:</p>\n      <ul>\n        <li>State Physician Health Programs have recovery rates exceeding general population, with successful outcomes even 5+ years into monitoring</li>\n        <li>Substance use disorder is highly treatable\u2014recovery rates improve significantly with structured support</li>\n        <li>Therapy and peer support are effective for moral injury, burnout, and occupational trauma</li>\n        <li>Thousands of healthcare providers are actively in recovery and thriving in their careers and personal lives</li>\n      </ul>\n      <p><strong>Your life has value. Your health matters. Help is available. Recovery is possible.</strong></p>\n    </div>\n  </div>",
+  "resources": [
+    {
+      "id": "988-lifeline",
+      "name": "988 Suicide & Crisis Lifeline",
+      "category_id": "primary_emergency",
+      "type": "emergency",
+      "description": "Free, confidential support for people in distress, crisis prevention and resources",
+      "description_expanded": "The 988 Suicide & Crisis Lifeline provides 24/7 free, confidential support for anyone experiencing mental health crisis. Counselors are trained to listen without judgment and connect callers with local resources. Over 98% of callers receive help without emergency services being needed.",
+      "phone": "988",
+      "text_code": "988",
+      "text_number": "988",
+      "web_url": "https://988lifeline.org",
+      "contact_methods": [
+        "phone",
+        "text"
+      ],
+      "availability": "24/7",
+      "response_time": "immediate",
+      "languages": [
+        "English",
+        "Spanish",
+        "Vietnamese",
+        "Mandarin",
+        "Cantonese"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-emergency'><div class='resource-header'><h5>988 Suicide & Crisis Lifeline</h5></div><div class='contact-info'><span class='contact-label'>Call or text:</span><a href='tel:988' class='contact-link emergency'>988</a></div><div class='resource-description'><p>24/7 free confidential support for people in distress, prevention and crisis resources</p></div></div>"
+    },
+    {
+      "id": "crisis-text-line",
+      "name": "Crisis Text Line",
+      "category_id": "primary_emergency",
+      "type": "standard",
+      "description": "Connect with trained crisis counselors via text message, available 24/7",
+      "description_expanded": "Crisis Text Line connects people in crisis with trained volunteers through text messaging. This provides an immediate, accessible way to reach out when calling feels too difficult. Counselors help move people away from the crisis moment through supportive conversation.",
+      "phone": null,
+      "text_code": "HOME",
+      "text_number": "741741",
+      "web_url": "https://www.crisistextline.org",
+      "contact_methods": [
+        "text"
+      ],
+      "availability": "24/7",
+      "response_time": "<5 minutes",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Crisis Text Line</h5></div><div class='contact-info'><span class='contact-label'>Text</span> <strong class='text-keyword'>HOME</strong> to <a href='sms:741741' class='contact-link'>741741</a></div><div class='resource-description'><p>Connect with a trained crisis counselor via text message, available 24/7</p></div></div>"
+    },
+    {
+      "id": "frontline",
+      "name": "For the Frontlines",
+      "category_id": "primary_emergency",
+      "type": "highlighted",
+      "description": "Crisis counseling specifically for healthcare professionals and first responders",
+      "description_expanded": "For the Frontlines offers crisis text support specifically for healthcare professionals and frontline workers. Counselors understand the unique stressors of healthcare work, moral injury, compassion fatigue, and burnout. This resource prioritizes the specific challenges medical professionals face.",
+      "phone": null,
+      "text_code": "FRONTLINE",
+      "text_number": "741741",
+      "web_url": "https://www.crisistextline.org/frontline",
+      "contact_methods": [
+        "text"
+      ],
+      "availability": "24/7",
+      "response_time": "<5 minutes",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-highlighted'><div class='resource-header'><h5>For the Frontlines</h5></div><div class='contact-info'><span class='contact-label'>Text</span> <strong class='text-keyword'>FRONTLINE</strong> to <a href='sms:741741' class='contact-link'>741741</a></div><div class='resource-description'><p>Crisis counseling specifically for healthcare professionals and first responders</p></div></div>"
+    },
+    {
+      "id": "physician-support-line",
+      "name": "Physician Support Line",
+      "category_id": "primary_emergency",
+      "type": "standard",
+      "description": "Confidential support line staffed by volunteer psychiatrists for physicians",
+      "description_expanded": "Staffed by volunteer psychiatrists, the Physician Support Line provides free, confidential peer support for physicians and medical students. Callers can discuss any personal or professional challenge. No appointment is necessary, and the line reports to no one. Calls are completely confidential and separate from licensing boards.",
+      "phone": "1-888-409-0141",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.physiciansupportline.com",
+      "contact_methods": [
+        "phone"
+      ],
+      "availability": "Monday-Friday 8 AM - 11 PM ET",
+      "response_time": "immediate",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "physicians",
+        "trainees"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Physician Support Line</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-888-409-0141' class='contact-link'>1-888-409-0141</a></div><div class='resource-description'><p>Confidential support line staffed by volunteer psychiatrists for physicians</p></div></div>"
+    },
+    {
+      "id": "samhsa-national-helpline",
+      "name": "SAMHSA National Helpline",
+      "category_id": "primary_emergency",
+      "type": "standard",
+      "description": "Free treatment referral and information service for mental health and substance use",
+      "description_expanded": "SAMHSA National Helpline provides free, confidential, 24/7 treatment referral and information services. Trained counselors connect callers to local mental health resources, support groups, and community-based organizations. Calls are not reported to employers or licensing boards.",
+      "phone": "1-800-662-4357",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.samhsa.gov/find-help/national-helpline",
+      "contact_methods": [
+        "phone"
+      ],
+      "availability": "24/7",
+      "response_time": "immediate",
+      "languages": [
+        "English",
+        "Spanish",
+        "170+ languages via translation services"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>SAMHSA National Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-662-4357' class='contact-link'>1-800-662-4357</a></div><div class='resource-description'><p>Free treatment referral and information service for mental health and substance use</p></div></div>"
+    },
+    {
+      "id": "magellan-health",
+      "name": "Magellan Health Helpline",
+      "category_id": "primary_emergency",
+      "type": "standard",
+      "description": "Mental health support and resources for healthcare professionals",
+      "description_expanded": "Magellan Health provides 24/7 mental health support with counselors trained in healthcare professional issues. The line offers crisis intervention, referral to local mental health services, and ongoing support resources. Many health systems contract with Magellan, making this a key resource.",
+      "phone": "1-800-327-7451",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.magellanhealth.com",
+      "contact_methods": [
+        "phone"
+      ],
+      "availability": "24/7",
+      "response_time": "immediate",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Magellan Health Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-327-7451' class='contact-link'>1-800-327-7451</a></div><div class='resource-description'><p>Mental health support and resources for healthcare professionals</p></div></div>"
+    },
+    {
+      "id": "save-nurses-crisis",
+      "name": "National Nurses Crisis Center (NNCC)",
+      "category_id": "specialized_provider",
+      "type": "highlighted",
+      "description": "AI-powered support and crisis helpline specifically for nurses",
+      "description_expanded": "NNCC provides 24/7 AI-powered support for nurses experiencing burnout, workplace stress, or crisis situations. Nurses can access immediate confidential guidance. The center recognizes the unique challenges nurses face: staffing shortages, moral distress, patient ratios, and systemic burnout.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://nursecrisis.org",
+      "contact_methods": [
+        "web",
+        "chat"
+      ],
+      "availability": "24/7",
+      "response_time": "immediate",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-highlighted'><div class='resource-header'><h5>National Nurses Crisis Center</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://nursecrisis.org' class='contact-link' target='_blank'>nursecrisis.org</a></div><div class='resource-description'><p>AI-powered support and crisis helpline specifically for nurses facing burnout and stress</p></div></div>"
+    },
+    {
+      "id": "emotional-ppe-project",
+      "name": "Emotional PPE Project",
+      "category_id": "specialized_provider",
+      "type": "standard",
+      "description": "Free, immediate mental health support connecting healthcare workers with licensed therapists",
+      "description_expanded": "The Emotional PPE Project connects healthcare workers in crisis with licensed mental health professionals who volunteer their time. No insurance required, no cost, no prerequisites. Therapists are trained in healthcare-specific trauma and understand moral injury, compassion fatigue, and burnout.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://emotionalppe.com",
+      "contact_methods": [
+        "web",
+        "phone"
+      ],
+      "availability": "24/7 matching with licensed professionals",
+      "response_time": "<1 hour",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Emotional PPE Project</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://emotionalppe.com' class='contact-link' target='_blank'>emotionalppe.com</a></div><div class='resource-description'><p>Free immediate mental health support connecting healthcare workers with licensed therapists</p></div></div>"
+    },
+    {
+      "id": "peer-rx-med",
+      "name": "PeerRxMed",
+      "category_id": "specialized_provider",
+      "type": "standard",
+      "description": "Peer-to-peer support program for physicians and healthcare professionals",
+      "description_expanded": "PeerRxMed offers free peer-to-peer support for physicians and healthcare professionals. Members connect through weekly support groups or individual peer mentoring. The program emphasizes connection, skill-building, and optimal wellbeing for providers. Staffed by physicians who have walked the same path.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://peerxmed.org",
+      "contact_methods": [
+        "web",
+        "phone"
+      ],
+      "availability": "Multiple peer support groups weekly",
+      "response_time": "<48 hours for 1-on-1",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "physicians",
+        "trainees"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>PeerRxMed</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://peerxmed.org' class='contact-link' target='_blank'>peerxmed.org</a></div><div class='resource-description'><p>Free peer-to-peer support program for physicians and healthcare professionals</p></div></div>"
+    },
+    {
+      "id": "dont-clock-out",
+      "name": "Don't Clock Out",
+      "category_id": "specialized_provider",
+      "type": "standard",
+      "description": "Free weekly support groups for healthcare professionals via Zoom with anonymous options",
+      "description_expanded": "Don't Clock Out provides free weekly support groups for healthcare professionals facing burnout, moral injury, or crisis. Groups are conducted via Zoom with optional anonymity. Members can share experiences, learn coping strategies, and build community with others who understand.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://dontclockout.org",
+      "contact_methods": [
+        "web"
+      ],
+      "availability": "Weekly support groups via Zoom",
+      "response_time": "Next scheduled group",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Don't Clock Out</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://dontclockout.org' class='contact-link' target='_blank'>dontclockout.org</a></div><div class='resource-description'><p>Free weekly support groups for healthcare professionals via Zoom with anonymous options</p></div></div>"
+    },
+    {
+      "id": "nami-helpline",
+      "name": "National Alliance on Mental Illness (NAMI) Helpline",
+      "category_id": "specialized_provider",
+      "type": "standard",
+      "description": "Confidential peer support and resources for mental health challenges",
+      "description_expanded": "NAMI Helpline offers confidential peer-to-peer support for anyone experiencing mental health challenges. Trained peers answer calls and can connect you with local support groups, resources for building resilience, and family support services. NAMI recognizes healthcare professionals' unique challenges.",
+      "phone": "1-800-950-6264",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.nami.org/helpline",
+      "contact_methods": [
+        "phone"
+      ],
+      "availability": "Monday-Friday 10 AM - 10 PM ET",
+      "response_time": "<1 hour",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "therapists"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>NAMI Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-950-6264' class='contact-link'>1-800-950-6264</a></div><div class='resource-description'><p>Confidential peer support and resources for mental health challenges for healthcare providers</p></div></div>"
+    },
+    {
+      "id": "online-hcp-community",
+      "name": "Online Healthcare Provider Communities",
+      "category_id": "specialized_provider",
+      "type": "standard",
+      "description": "Anonymous online communities for healthcare professionals to share experiences and advice",
+      "description_expanded": "Online communities like r/medicine, r/nursing, and specialty-specific forums provide anonymous peer support. Healthcare workers share challenges, advice, and encouragement. While anonymity allows honest discussion, be aware these are public forums\u2014don't share identifiable information.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.reddit.com/r/medicine",
+      "contact_methods": [
+        "web"
+      ],
+      "availability": "24/7 online forums",
+      "response_time": "Minutes to hours",
+      "languages": [
+        "English",
+        "Multiple languages"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "partial",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Online Communities</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><span class='contact-link'>Reddit, Facebook groups, provider forums</span></div><div class='resource-description'><p>Anonymous online communities for healthcare professionals to share experiences and advice</p></div></div>"
+    },
+    {
+      "id": "php-directory",
+      "name": "Federation of State Physician Health Programs (FSPHP)",
+      "category_id": "regional_state",
+      "type": "standard",
+      "description": "State-specific confidential physician health programs with peer support and monitoring",
+      "description_expanded": "PHPs are confidential resources for physicians and licensed healthcare professionals suffering from mental health, substance use, or behavioral issues. Every state has developed a PHP that provides confidential peer support, treatment coordination, and continuing care monitoring. PHPs have higher recovery rates than general population and are separate from licensing boards.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.fsphp.org/state-programs",
+      "contact_methods": [
+        "web",
+        "phone"
+      ],
+      "availability": "Varies by state program",
+      "response_time": "<24 hours",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "physicians"
+      ],
+      "cost": "free",
+      "confidentiality_level": "professional_discretion",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>State Physician Health Programs (PHPs)</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.fsphp.org/state-programs' class='contact-link' target='_blank'>Find your state program</a></div><div class='resource-description'><p>Confidential state-specific physician health programs with peer support and monitoring</p></div></div>"
+    },
+    {
+      "id": "california-php",
+      "name": "California Physician Health Program",
+      "category_id": "regional_state",
+      "type": "standard",
+      "description": "Confidential support for California physicians experiencing mental health or substance use issues",
+      "description_expanded": "California PHP provides confidential evaluation, treatment coordination, and monitoring for California physicians. Established in 1983, the program is completely separate from the Medical Board. Physicians receive peer support from psychiatrists and other healthcare providers who understand medical practice stressors.",
+      "phone": "1-800-911-0556",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.cphn.org",
+      "contact_methods": [
+        "phone",
+        "web"
+      ],
+      "availability": "24/7 answering service",
+      "response_time": "24 hours",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "specialties": [
+        "physicians"
+      ],
+      "cost": "free",
+      "confidentiality_level": "professional_discretion",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>California Physician Health Program</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-911-0556' class='contact-link'>1-800-911-0556</a></div><div class='resource-description'><p>Confidential support for California physicians experiencing mental health or substance use issues</p></div></div>"
+    },
+    {
+      "id": "new-york-php",
+      "name": "New York Physician Health Program",
+      "category_id": "regional_state",
+      "type": "standard",
+      "description": "Confidential peer support for New York physicians with health issues",
+      "description_expanded": "New York PHP is a peer-run program providing confidential services to New York physicians dealing with physical, mental, or behavioral health issues. The program emphasizes early intervention and recovery support with peer monitoring to ensure successful treatment outcomes.",
+      "phone": "1-212-971-6393",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.mssny.org/php",
+      "contact_methods": [
+        "phone",
+        "web"
+      ],
+      "availability": "Business hours + emergency line",
+      "response_time": "24 hours",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "physicians"
+      ],
+      "cost": "free",
+      "confidentiality_level": "professional_discretion",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>New York Physician Health Program</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-212-971-6393' class='contact-link'>1-212-971-6393</a></div><div class='resource-description'><p>Confidential peer support for New York physicians with health issues</p></div></div>"
+    },
+    {
+      "id": "texas-php",
+      "name": "Texas Physician Health Program",
+      "category_id": "regional_state",
+      "type": "standard",
+      "description": "Confidential support for Texas physicians with substance use and mental health challenges",
+      "description_expanded": "Texas PHP provides confidential assessment, treatment referral, and monitoring for Texas physicians. The program works with treating professionals and maintains monitoring relationships to support long-term recovery. Completely separate from Texas Medical Board licensing decisions.",
+      "phone": "1-855-632-2574",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.thephp.org",
+      "contact_methods": [
+        "phone",
+        "web"
+      ],
+      "availability": "24/7 answering service",
+      "response_time": "24 hours",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "specialties": [
+        "physicians"
+      ],
+      "cost": "free",
+      "confidentiality_level": "professional_discretion",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Texas Physician Health Program</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-855-632-2574' class='contact-link'>1-855-632-2574</a></div><div class='resource-description'><p>Confidential support for Texas physicians with substance use and mental health challenges</p></div></div>"
+    },
+    {
+      "id": "state-mental-health-crisis",
+      "name": "State Mental Health Crisis Lines (988 Lifeline - Specialized Routing)",
+      "category_id": "regional_state",
+      "type": "standard",
+      "description": "State-specific crisis services connected through 988 Lifeline",
+      "description_expanded": "When you call or text 988, you can select your state to connect with local crisis services. Most states have specialized crisis teams, mobile response units, and local hospital partnerships. Healthcare providers can request specific support for occupational stressors and licensure concerns.",
+      "phone": "988",
+      "text_code": "988",
+      "text_number": "988",
+      "web_url": "https://988lifeline.org",
+      "contact_methods": [
+        "phone",
+        "text"
+      ],
+      "availability": "24/7",
+      "response_time": "immediate",
+      "languages": [
+        "English",
+        "Spanish",
+        "100+ languages"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>State Crisis Lines via 988</h5></div><div class='contact-info'><span class='contact-label'>Call or text:</span><a href='tel:988' class='contact-link'>988</a></div><div class='resource-description'><p>State-specific crisis services connected through 988 Lifeline</p></div></div>"
+    },
+    {
+      "id": "rise-residency",
+      "name": "RISE Residency Peer Support",
+      "category_id": "peer_support",
+      "type": "standard",
+      "description": "Peer responder program providing psychological first aid and emotional support for residents",
+      "description_expanded": "RISE trains healthcare employees and residents to provide peer support following difficult clinical events or personal crises. Peer responders deliver psychological first aid and emotional support to colleagues. This addresses immediate distress and connects people to professional resources when needed.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.risepeerprogram.com",
+      "contact_methods": [
+        "web",
+        "phone"
+      ],
+      "availability": "Training programs and ongoing support",
+      "response_time": "Same-day or next day",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "trainees",
+        "physicians"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>RISE Peer Support Program</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.risepeerprogram.com' class='contact-link' target='_blank'>risepeerprogram.com</a></div><div class='resource-description'><p>Peer responder program providing psychological first aid and emotional support</p></div></div>"
+    },
+    {
+      "id": "schwartz-rounds",
+      "name": "Schwartz Rounds",
+      "category_id": "peer_support",
+      "type": "standard",
+      "description": "Monthly protected time for healthcare workers to discuss challenges they face in patient care",
+      "description_expanded": "Schwartz Rounds are structured, recurring conversations where healthcare workers discuss the emotional and social aspects of caring for patients. Monthly 1-hour sessions allow teams to share experiences, build understanding, and reduce burnout. Many hospitals now offer Schwartz Rounds as part of wellness initiatives.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.theschwartzcenter.org/programs/schwartz-rounds/",
+      "contact_methods": [
+        "web"
+      ],
+      "availability": "Monthly or quarterly scheduled sessions",
+      "response_time": "Next scheduled round",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Schwartz Rounds</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.theschwartzcenter.org/programs/schwartz-rounds/' class='contact-link' target='_blank'>Find at your hospital</a></div><div class='resource-description'><p>Monthly protected time for healthcare workers to discuss challenges in patient care</p></div></div>"
+    },
+    {
+      "id": "dr-lorna-breen-foundation",
+      "name": "Dr. Lorna Breen Heroes' Foundation",
+      "category_id": "peer_support",
+      "type": "standard",
+      "description": "Foundation supporting healthcare workers through peer support and removing stigma around mental health care",
+      "description_expanded": "The Dr. Lorna Breen Heroes' Foundation works to change healthcare culture around mental health. The foundation advocates for removal of stigmatizing questions on licensing and credentialing applications. Resources include peer support directories, guidance on accessing care safely, and information about confidentiality protections.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://drlornabreen.org/",
+      "contact_methods": [
+        "web"
+      ],
+      "availability": "Online resources and referrals 24/7",
+      "response_time": "<24 hours for referrals",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "physicians",
+        "nurses",
+        "pharmacists",
+        "therapists"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Dr. Lorna Breen Heroes' Foundation</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://drlornabreen.org/' class='contact-link' target='_blank'>drlornabreen.org</a></div><div class='resource-description'><p>Foundation supporting healthcare workers through peer support and removing stigma</p></div></div>"
+    },
+    {
+      "id": "eap-standard",
+      "name": "Employee Assistance Programs (EAP)",
+      "category_id": "workplace",
+      "type": "standard",
+      "description": "Employer-sponsored mental health and counseling services (82% of US employers offer)",
+      "description_expanded": "Most employers provide free EAP services offering confidential counseling, mental health support, financial/legal consultation, and wellness programs. Typically 3-8 free counseling sessions per year. EAP services are completely separate from your employer's HR and medical records. Calls are not reported to management or used for employment decisions.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": null,
+      "contact_methods": [
+        "phone",
+        "web"
+      ],
+      "availability": "24/7",
+      "response_time": "24-48 hours for counseling",
+      "languages": [
+        "English",
+        "Spanish",
+        "Multiple"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Employee Assistance Program (EAP)</h5></div><div class='contact-info'><span class='contact-label'>Info:</span><span class='contact-link'>Check your employer benefits guide</span></div><div class='resource-description'><p>Employer-sponsored confidential counseling and mental health services available 24/7</p></div></div>"
+    },
+    {
+      "id": "hospital-chaplaincy",
+      "name": "Hospital Chaplaincy Services",
+      "category_id": "workplace",
+      "type": "standard",
+      "description": "Spiritual and emotional support from hospital chaplaincy teams available 24/7",
+      "description_expanded": "Hospital chaplains provide spiritual, emotional, and existential support to patients, families, and staff. Many chaplaincy services support healthcare workers through moral distress, grief, and spiritual crises. Services are available to all staff regardless of religious background. Staff can request chaplaincy support confidentially.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": null,
+      "contact_methods": [
+        "phone",
+        "in-person"
+      ],
+      "availability": "24/7",
+      "response_time": "immediate",
+      "languages": [
+        "English",
+        "Spanish",
+        "Multiple"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Hospital Chaplaincy Services</h5></div><div class='contact-info'><span class='contact-label'>Contact:</span><span class='contact-link'>Your hospital chaplaincy office</span></div><div class='resource-description'><p>Spiritual and emotional support from hospital chaplaincy teams available 24/7</p></div></div>"
+    },
+    {
+      "id": "occupational-health",
+      "name": "Occupational Health & Wellness Services",
+      "category_id": "workplace",
+      "type": "standard",
+      "description": "Workplace health services with confidential mental health support and wellness programs",
+      "description_expanded": "Many healthcare institutions offer occupational health services that include mental health support, wellness coaching, and crisis intervention. These are typically confidential and separate from medical records. Staff can access support proactively or when facing acute distress related to workplace events.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": null,
+      "contact_methods": [
+        "phone",
+        "in-person"
+      ],
+      "availability": "Business hours + emergency",
+      "response_time": "Same-day",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Occupational Health & Wellness Services</h5></div><div class='contact-info'><span class='contact-label'>Contact:</span><span class='contact-link'>Your institution occupational health</span></div><div class='resource-description'><p>Workplace health services with confidential mental health support and wellness programs</p></div></div>"
+    },
+    {
+      "id": "samhsa-disaster",
+      "name": "SAMHSA Disaster Distress Helpline",
+      "category_id": "primary_emergency",
+      "type": "standard",
+      "description": "Crisis counseling and support for those experiencing distress related to disasters",
+      "description_expanded": "SAMHSA's Disaster Distress Helpline provides 24/7 crisis counseling for people affected by disaster. For healthcare professionals, this resource is particularly valuable during mass casualty events, public health emergencies, or collective trauma situations that impact the healthcare workforce.",
+      "phone": "1-800-985-5990",
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.samhsa.gov/find-help/disaster-distress-helpline",
+      "contact_methods": [
+        "phone"
+      ],
+      "availability": "24/7",
+      "response_time": "immediate",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>SAMHSA Disaster Distress Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-985-5990' class='contact-link'>1-800-985-5990</a></div><div class='resource-description'><p>Crisis counseling and support for those experiencing distress related to disasters</p></div></div>"
+    },
+    {
+      "id": "regional-mental-health",
+      "name": "Regional Mental Health Crisis Services",
+      "category_id": "regional_state",
+      "type": "standard",
+      "description": "Community mental health centers with crisis intervention and emergency services",
+      "description_expanded": "Most communities have regional mental health crisis services through community mental health centers. Services include crisis assessment, mobile crisis teams, crisis stabilization units, and 24/7 emergency mental health services. Contact your local health department or hospital for information about your regional crisis services.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://findtreatment.gov",
+      "contact_methods": [
+        "phone",
+        "web",
+        "in-person"
+      ],
+      "availability": "24/7 emergency services",
+      "response_time": "immediate to <1 hour",
+      "languages": [
+        "English",
+        "Spanish",
+        "Multiple"
+      ],
+      "specialties": [
+        "nurses",
+        "physicians",
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
+      ],
+      "cost": "sliding_scale",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Regional Mental Health Crisis Services</h5></div><div class='contact-info'><span class='contact-label'>Find Local:</span><a href='https://findtreatment.gov' class='contact-link' target='_blank'>findtreatment.gov</a></div><div class='resource-description'><p>Community mental health centers with crisis intervention and emergency services</p></div></div>"
+    },
+    {
+      "id": "physician-wellness-network",
+      "name": "Physician Wellness Network",
+      "category_id": "peer_support",
+      "type": "standard",
+      "description": "National network connecting physicians with wellness resources and peer support",
+      "description_expanded": "The Physician Wellness Network connects physicians with mental health resources, peer support networks, and wellness initiatives. The network maintains directories of state-specific resources, evidence-based interventions, and connected healthcare providers who understand physician burnout and moral injury.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://physicianwellness.network",
+      "contact_methods": [
+        "web"
+      ],
+      "availability": "Online resources 24/7",
+      "response_time": "Variable",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "physicians"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Physician Wellness Network</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://physicianwellness.network' class='contact-link' target='_blank'>physicianwellness.network</a></div><div class='resource-description'><p>National network connecting physicians with wellness resources and peer support</p></div></div>"
+    },
+    {
+      "id": "nurse-support-network",
+      "name": "Nurse Support Network",
+      "category_id": "peer_support",
+      "type": "standard",
+      "description": "Specialized peer support and resource network for nurses facing burnout",
+      "description_expanded": "The Nurse Support Network provides peer support, mentoring, and resource connections for nurses. Members access support through online forums, monthly virtual support groups, and connections to nurse-specific mental health resources. The network recognizes staffing crises, moral distress, and systemic burnout as organizational problems, not individual failures.",
+      "phone": null,
+      "text_code": null,
+      "text_number": null,
+      "web_url": "https://www.nursesupport.network",
+      "contact_methods": [
+        "web"
+      ],
+      "availability": "Online 24/7, groups weekly",
+      "response_time": "Immediate online, groups weekly",
+      "languages": [
+        "English"
+      ],
+      "specialties": [
+        "nurses"
+      ],
+      "cost": "free",
+      "confidentiality_level": "full",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Nurse Support Network</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.nursesupport.network' class='contact-link' target='_blank'>nursesupport.network</a></div><div class='resource-description'><p>Specialized peer support and resource network for nurses facing burnout</p></div></div>"
+    }
+  ]
+}
