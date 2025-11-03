@@ -87,13 +87,13 @@ The entire application is a **fast, responsive, and accessible Single Page Appli
 | **Structure** | HTML5 with semantic tags & ARIA attributes | Accessibility & SEO |
 | **Styling** | CSS3 with custom properties & dual themes | Maintainable, themeable design system |
 | **Logic** | Vanilla JavaScript (ES6+) | No frameworks—pure, performant vanilla JS |
-| **Visualization** | Chart.js | ROI modeling & implementation tracking |
+| **Visualization** | Chart.js | ROI chart visualization |
 | **Data** | 3-tier JSON architecture | Provider wellness, organizational strategies, crisis resources |
 | **Deployment** | GitHub Pages | Free, fast static hosting |
 
 **Statistics:**
 - **No external dependencies** except Chart.js for visualizations
-- **Lightweight:** ~130 KB JavaScript, ~95 KB CSS, ~20 KB HTML
+- **Lightweight:** ~145 KB JavaScript, ~95 KB CSS, ~20 KB HTML
 - **Performance:** Instant navigation via SPA, lazy-loaded content on demand
 - **Accessibility:** WCAG Level AA compliant with full keyboard navigation
 
@@ -123,7 +123,7 @@ cd Fulcrum
 ```
 Fulcrum/
 ├── index.html                          # Main entry point
-├── app.js                              # 130KB vanilla JavaScript (3-tier routing, search, charting)
+├── app.js                              # 145KB vanilla JavaScript (3-tier routing, search, charting)
 ├── style.css                           # 95KB CSS with dual-theme system
 ├── README.md                           # This file
 ├── data/
@@ -189,15 +189,19 @@ Fulcrum/
 - [x] Provider role-specific recommendations
 - [x] Partial implementation of Mobile View (optimization for small-screen devices)
 
+**V2.1 Update:**
+- [x] Significantly reworked the ROI Calculator logic to incorporate separate Human-Impact and Financial-Impact Metrics (now it's 800+ lines of code)
+- [x] Minor bug-fixes in Organizational Strategies section
+
 **Future Vision:**
 - [ ] Complete Mobile View implementation to improve layout on mobile devices (priority)
-- [ ] Make new additions comply with Accessibility Guidelines
+- [ ] Make new additions (v2) compliant with Accessibility Guidelines
 - [ ] Make the app.js modular (separate js files for each major section)
 - [ ] Print-friendly versions of resources and organizational reports
 - [ ] Standalone "Financial Wellness" and "Substance Use" pages with dedicated content
 - [ ] Improve navigation across sections
 - [ ] Replace existing provider images. Add more images/diagrams for content clarity
-- [ ] Make the citations clickable/verifiable
+- [ ] Have all citations be clickable/verifiable
 - [ ] Improve Organizational Strategies further by improving logic across the Provider and Roadmap sections etc.
 - [ ] Multi-language support (Spanish, Chinese, etc.)
 - [ ] Analytics dashboard (engagement metrics, most-used resources)
