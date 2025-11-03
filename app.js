@@ -3018,13 +3018,16 @@ function calculateWellnessROI(orgDetails, modelAssumptions) {
         projectionYears, avgSalary
     } = orgDetails;
     
+    // Create local copies to modify during projection
     let { currentBurnoutRate, currentTurnoverRate } = orgDetails;
 
     const {
-        turnoverCostMultiplier, productivityLossRate, maxEffectiveInvestment
+        turnoverCostMultiplier, productivityLossRate, maxEffectiveInvestment,
+        year1BurnoutReduction, year1TurnoverReduction,
+        sustainBurnoutReduction, sustainTurnoverReduction
     } = modelAssumptions;
 
-    // --- 1. Calculate Baseline Costs (The problem you're solving) ---
+    // --- 1. Calculate Baseline Costs (The problem we're solving) ---
     const turnoverCostPerProvider = avgSalary * turnoverCostMultiplier;
     const productivityLossPerBurnout = avgSalary * productivityLossRate;
     
@@ -3035,6 +3038,8 @@ function calculateWellnessROI(orgDetails, modelAssumptions) {
     };
     
     const baselineAnnualCost = calculateAnnualCost(currentBurnoutRate, currentTurnoverRate);
+    const baselineProvidersInBurnout = numProviders * currentBurnoutRate;
+    const baselineProvidersTurningOver = numProviders * currentTurnoverRate;
     
     // --- 2. Project Year-by-Year ---
     let projectedData = [];
@@ -3047,24 +3052,23 @@ function calculateWellnessROI(orgDetails, modelAssumptions) {
     const year1InvestmentRatio = (maxEffectiveInvestment > 0) ? Math.min(1, year1InvestmentPerProvider / maxEffectiveInvestment) : 0;
     const sustainInvestmentRatio = (maxEffectiveInvestment > 0) ? Math.min(1, sustainInvestmentPerProvider / maxEffectiveInvestment) : 0;
     
-    // Max potential reductions are 35% for burnout and 25% for turnover
-    // Year 1 gets a big hit, subsequent years get smaller sustaining hits
-    const year1BurnoutReduction = 0.35 * year1InvestmentRatio;
-    const year1TurnoverReduction = 0.25 * year1InvestmentRatio;
+    // Max potential reductions are applied based on investment ratio
+    const year1BurnoutReductionEffect = year1BurnoutReduction * year1InvestmentRatio;
+    const year1TurnoverReductionEffect = year1TurnoverReduction * year1InvestmentRatio;
     
-    const sustainBurnoutReduction = 0.10 * sustainInvestmentRatio; // Smaller effect
-    const sustainTurnoverReduction = 0.05 * sustainInvestmentRatio; // Smaller effect
+    const sustainBurnoutReductionEffect = sustainBurnoutReduction * sustainInvestmentRatio;
+    const sustainTurnoverReductionEffect = sustainTurnoverReduction * sustainInvestmentRatio;
 
     for (let year = 1; year <= projectionYears; year++) {
         let investment = (year === 1) ? year1Investment : sustainingInvestment;
         
         // Apply reductions
 		if (year === 1) {
-            currentBurnoutRate = Math.max(0, currentBurnoutRate * (1 - year1BurnoutReduction));
-            currentTurnoverRate = Math.max(0, currentTurnoverRate * (1 - year1TurnoverReduction));
+            currentBurnoutRate = Math.max(0, currentBurnoutRate * (1 - year1BurnoutReductionEffect));
+            currentTurnoverRate = Math.max(0, currentTurnoverRate * (1 - year1TurnoverReductionEffect));
         } else {
-            currentBurnoutRate = Math.max(0, currentBurnoutRate * (1 - sustainBurnoutReduction));
-            currentTurnoverRate = Math.max(0, currentTurnoverRate * (1 - sustainTurnoverReduction));
+            currentBurnoutRate = Math.max(0, currentBurnoutRate * (1 - sustainBurnoutReductionEffect));
+            currentTurnoverRate = Math.max(0, currentTurnoverRate * (1 - sustainTurnoverReductionEffect));
         }
         
         // Calculate new costs and savings
@@ -3073,12 +3077,16 @@ function calculateWellnessROI(orgDetails, modelAssumptions) {
         const netSavingsForYear = annualSavings - investment;
         cumulativeNetSavings += netSavingsForYear;
         
+        // --- Add human impact data to projected data ---
         projectedData.push({
             year: `Year ${year}`,
             investment: investment,
             annualSavings: Math.round(annualSavings),
             netSavingsForYear: Math.round(netSavingsForYear),
-            cumulativeNetSavings: Math.round(cumulativeNetSavings)
+            cumulativeNetSavings: Math.round(cumulativeNetSavings),
+            // Store these for the new Human Impact chart
+            burnoutRate: currentBurnoutRate, 
+            turnoverRate: currentTurnoverRate
         });
     }
     
@@ -3095,6 +3103,15 @@ function calculateWellnessROI(orgDetails, modelAssumptions) {
         breakEvenYear = breakEven.year;
     }
     
+    // --- Calculate total human impact metrics ---
+    const finalProjectedProvidersInBurnout = numProviders * currentBurnoutRate;
+    const finalProjectedProvidersTurningOver = numProviders * currentTurnoverRate;
+    
+    const totalBurnoutAverted = (baselineProvidersInBurnout - finalProjectedProvidersInBurnout);
+    const totalProvidersRetained = projectedData.reduce((sum, year) => 
+	  sum + (baselineProvidersTurningOver - (year.turnoverRate * numProviders)), 0
+	);
+
     return {
         projectedData,
         summary: {
@@ -3102,7 +3119,12 @@ function calculateWellnessROI(orgDetails, modelAssumptions) {
             totalSavings: Math.round(totalSavings),
             totalNetSavings: Math.round(totalNetSavings),
             finalROI: Math.round(finalROI),
-            breakEvenYear: breakEvenYear
+            breakEvenYear: breakEvenYear,
+            // Add new human impact numbers
+            totalBurnoutAverted: Math.round(totalBurnoutAverted),
+            totalProvidersRetained: Math.round(totalProvidersRetained),
+            baselineBurnoutRate: orgDetails.currentBurnoutRate, // Pass original rate for summary
+            baselineTurnoverRate: orgDetails.currentTurnoverRate // Pass original rate for summary
         }
     };
 }
@@ -3118,7 +3140,11 @@ function validateROIForm(formData) {
         { name: 'projectionYears', min: 1, max: 10, label: 'Projection Period' },
         { name: 'turnoverCostMultiplier', min: 0, label: 'Turnover Cost' },
         { name: 'productivityLossRate', min: 0, max: 100, label: 'Productivity Loss (as % of Salary)' },
-        { name: 'maxEffectiveInvestment', min: 1, label: 'Max Effective Investment' }
+        { name: 'maxEffectiveInvestment', min: 1, label: 'Max Effective Investment' },
+        { name: 'year1BurnoutReduction', min: 0, max: 100, label: 'Year 1 Burnout Reduction' },
+        { name: 'year1TurnoverReduction', min: 0, max: 100, label: 'Year 1 Turnover Reduction' },
+        { name: 'sustainBurnoutReduction', min: 0, max: 100, label: 'Sustaining Burnout Reduction' },
+        { name: 'sustainTurnoverReduction', min: 0, max: 100, label: 'Sustaining Turnover Reduction' }
     ];
 
     for (const field of fields) {
@@ -3201,24 +3227,33 @@ function displayROICalculator(containerId = 'roi-calculator') {
 					<div class="form-group">
 						<label>Max Effective Investment ($/Provider) <span class="tooltip" title="The max investment per provider this model will use to calculate ROI. (e.g., $5,000)">ⓘ</span></label>
 						<input type="number" name="maxEffectiveInvestment" value="5000" min="0" />
-					</div>					
+					</div>
+                    
+                    <hr style="border: none; border-top: 1px solid var(--color-border); margin: 20px 0;">
+
+                    <div class="form-group">
+						<label>Year 1 Burnout Reduction (%) <span class="tooltip" title="Max burnout reduction % in Year 1 at full investment. (Default: 35%)">ⓘ</span></label>
+						<input type="number" name="year1BurnoutReduction" value="35" min="0" max="100" />
+					</div>
+                    <div class="form-group">
+						<label>Year 1 Turnover Reduction (%) <span class="tooltip" title="Max turnover reduction % in Year 1 at full investment. (Default: 25%)">ⓘ</span></label>
+						<input type="number" name="year1TurnoverReduction" value="25" min="0" max="100" />
+					</div>
+                    <div class="form-group">
+						<label>Sustaining Burnout Reduction (%) <span class="tooltip" title="Max sustaining burnout reduction % in Years 2+ at full investment. (Default: 10%)">ⓘ</span></label>
+						<input type="number" name="sustainBurnoutReduction" value="10" min="0" max="100" />
+					</div>
+                    <div class="form-group">
+						<label>Sustaining Turnover Reduction (%) <span class="tooltip" title="Max sustaining turnover reduction % in Years 2+ at full investment. (Default: 5%)">ⓘ</span></label>
+						<input type="number" name="sustainTurnoverReduction" value="5" min="0" max="100" />
+					</div>
                 </div>
                 
                 <button type="button" class="btn-primary" style="margin-top: 20px;" onclick="calculateAndDisplayROI()">Calculate Projection</button>
             </form>
             
             <div id="roi-results" class="roi-results" style="display: none;">
-                <h4>ROI Analysis Results</h4>
-                <div class="roi-results-grid" id="roi-summary-cards">
-                    </div>
-                
-                <div class="chart-container" style="margin-top: 32px;">
-                    <canvas id="roiChart"></canvas>
                 </div>
-
-                <div class="roi-recommendations" id="roi-recommendations-container"></div>
-				<div class="roi-methodology" id="roi-methodology-container"></div>
-            </div>
         </div>
     `;
     container.innerHTML = html;
@@ -3241,12 +3276,6 @@ function calculateAndDisplayROI() {
     const validationError = validateROIForm(formData);
     if (validationError) {
         // Clear old results and show error
-        document.getElementById('roi-summary-cards').innerHTML = '';
-        document.getElementById('roi-recommendations-container').innerHTML = '';
-        if (roiChartInstance) {
-            roiChartInstance.destroy();
-        }
-        
         resultsContainer.innerHTML = `<div class="roi-metric" style="border-color: var(--color-error); background: var(--color-bg-4); grid-column: 1 / -1;">
             <div class="metric-label" style="color: var(--color-error); font-weight: 600;">${validationError}</div>
         </div>`;
@@ -3267,35 +3296,62 @@ function calculateAndDisplayROI() {
     const modelAssumptions = {
         turnoverCostMultiplier: (parseInt(formData.get('turnoverCostMultiplier')) || 150) / 100,
         productivityLossRate: (parseInt(formData.get('productivityLossRate')) || 20) / 100,
-        maxEffectiveInvestment: parseInt(formData.get('maxEffectiveInvestment')) || 5000
+        maxEffectiveInvestment: parseInt(formData.get('maxEffectiveInvestment')) || 5000,
+        year1BurnoutReduction: (parseInt(formData.get('year1BurnoutReduction')) || 35) / 100,
+        year1TurnoverReduction: (parseInt(formData.get('year1TurnoverReduction')) || 25) / 100,
+        sustainBurnoutReduction: (parseInt(formData.get('sustainBurnoutReduction')) || 10) / 100,
+        sustainTurnoverReduction: (parseInt(formData.get('sustainTurnoverReduction')) || 5) / 100
     };
     
-    // Clear any previous validation error messages
+    // --- IMPROVEMENT 2: Run Scenario Analysis ---
+    // 1. Expected Scenario (User's inputs)
+    const expectedResults = calculateWellnessROI(orgDetails, modelAssumptions);
+    
+    // 2. Pessimistic Scenario (50% effectiveness)
+    const pessimisticAssumptions = { ...modelAssumptions,
+        year1BurnoutReduction: modelAssumptions.year1BurnoutReduction * 0.5,
+        year1TurnoverReduction: modelAssumptions.year1TurnoverReduction * 0.5,
+        sustainBurnoutReduction: modelAssumptions.sustainBurnoutReduction * 0.5,
+        sustainTurnoverReduction: modelAssumptions.sustainTurnoverReduction * 0.5
+    };
+    const pessimisticResults = calculateWellnessROI(orgDetails, pessimisticAssumptions);
+    
+    // 3. Optimistic Scenario (150% effectiveness)
+    const optimisticAssumptions = { ...modelAssumptions,
+        year1BurnoutReduction: modelAssumptions.year1BurnoutReduction * 1.5,
+        year1TurnoverReduction: modelAssumptions.year1TurnoverReduction * 1.5,
+        sustainBurnoutReduction: modelAssumptions.sustainBurnoutReduction * 1.5,
+        sustainTurnoverReduction: modelAssumptions.sustainTurnoverReduction * 1.5
+    };
+    const optimisticResults = calculateWellnessROI(orgDetails, optimisticAssumptions);
+    
+    
+    // --- Re-render the results container ---
     resultsContainer.innerHTML = `
         <h4>ROI Analysis Results</h4>
         <div class="roi-results-grid" id="roi-summary-cards"></div>
-        <div class="chart-container" style="margin-top: 32px;">
+        
+        <div id="roi-scenario-analysis-container"></div>
+        
+        <div id="roi-human-impact-chart-container" class="chart-container" style="margin-top: 32px; height: 300px;">
+            <canvas id="roiHumanImpactChart"></canvas>
+        </div>
+        
+        <div id="roi-chart-container" class="chart-container" style="margin-top: 32px; height: 400px;">
             <canvas id="roiChart"></canvas>
         </div>
+        
         <div class="roi-recommendations" id="roi-recommendations-container"></div>
 		<div class="roi-methodology" id="roi-methodology-container"></div>
     `;
 
-    const { projectedData, summary } = calculateWellnessROI(orgDetails, modelAssumptions);
+    const { summary } = expectedResults; // Use expected results for main display
 	const roiClass = summary.finalROI >= 0 ? 'positive' : 'negative';
 	const netSavingsClass = summary.totalNetSavings >= 0 ? 'positive' : 'negative';
     
-    // --- 1. Render Summary Cards ---
+    // --- 1. Render Summary Cards (with Human Impact) ---
     const summaryContainer = document.getElementById('roi-summary-cards');
     summaryContainer.innerHTML = `
-        <div class="roi-metric">
-            <div class="metric-label">Total Investment (${orgDetails.projectionYears} Yrs)</div>
-            <div class="metric-value investment">$${summary.totalInvestment.toLocaleString()}</div>
-        </div>
-        <div class="roi-metric">
-            <div class="metric-label">Total Gross Savings (${orgDetails.projectionYears} Yrs)</div>
-            <div class="metric-value savings">$${summary.totalSavings.toLocaleString()}</div>
-        </div>
         <div class="roi-metric highlight">
 			<div class="metric-label">Net Position (${orgDetails.projectionYears} Yrs)</div>
 			<div class="metric-value ${netSavingsClass}">
@@ -3312,18 +3368,239 @@ function calculateAndDisplayROI() {
             <div class="metric-label">Break-Even Point</div>
             <div class="metric-value">${summary.breakEvenYear}</div>
         </div>
+        <div class="roi-metric">
+            <div class="metric-label">Providers Retained (Cumulative)</div>
+            <div class="metric-value positive">${summary.totalProvidersRetained.toLocaleString()}</div>
+        </div>
+        <div class="roi-metric">
+            <div class="metric-label">Providers Averted from Burnout (by Year ${orgDetails.projectionYears})</div>
+            <div class="metric-value positive">${summary.totalBurnoutAverted.toLocaleString()}</div>
+        </div>
+        <div class="roi-metric">
+            <div class="metric-label">Total Investment (${orgDetails.projectionYears} Yrs)</div>
+            <div class="metric-value investment">$${summary.totalInvestment.toLocaleString()}</div>
+        </div>
     `;
 
-    // --- 2. Render Chart ---
-    const ctx = document.getElementById('roiChart').getContext('2d');
+    // --- 2. Render Scenario Analysis ---
+    renderScenarioAnalysis(pessimisticResults.summary, expectedResults.summary, optimisticResults.summary);
+
+    // --- 3. Render Charts ---
+    // Chart 1: The main financial chart
+    renderFinancialImpactChart(expectedResults.projectedData);
+    // Chart 2: The new human impact chart
+    renderHumanImpactChart(expectedResults.projectedData, orgDetails);
+    
+	// --- 4. Render High-Level Recommendation ( Executive Blurb ) ---
+    const recommendationsContainer = document.getElementById('roi-recommendations-container');
+    recommendationsContainer.innerHTML = `
+        <h5>Executive Summary</h5>
+        <p>This <strong>${orgDetails.projectionYears}-year projection</strong> shows an expected <strong>net position of $${summary.totalNetSavings.toLocaleString()}</strong> and a total <strong>ROI of ${summary.finalROI}%</strong>.</p>
+        <ul>
+            <li>The program is projected to become profitable by <strong>${summary.breakEvenYear}</strong>.</li>
+            <li>Over ${orgDetails.projectionYears} years, this investment is projected to retain <strong>${summary.totalProvidersRetained} providers</strong> and prevent burnout for <strong>${summary.totalBurnoutAverted} providers</strong>.</li>
+        </ul>
+    `;
+	
+	// --- 5. Render Calculation Methodology Summary ---
+	const methodologyContainer = document.getElementById('roi-methodology-container');
+	if (methodologyContainer) {
+	  const methodologySummary = generateCalculationSummary(orgDetails, modelAssumptions, summary);
+	  methodologyContainer.innerHTML = methodologySummary;
+	}
+    
+    resultsContainer.style.display = 'block';
+}
+
+/**
+ * Renders the Scenario Analysis table
+ */
+function renderScenarioAnalysis(pessimistic, expected, optimistic) {
+    const container = document.getElementById('roi-scenario-analysis-container');
+    if (!container) return;
+    
+    const formatValue = (value) => {
+        const num = Math.round(value);
+        const cssClass = num >= 0 ? 'positive' : 'negative';
+        return `<strong class="${cssClass}">$${num.toLocaleString()}</strong>`;
+    };
+
+    container.innerHTML = `
+        <div class="scenario-analysis">
+            <h4>Scenario Analysis (Net Position)</h4>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Net Savings (Total)</th>
+                        <th>ROI</th>
+                        <th>Break-Even</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pessimistic</strong> (50% Effectiveness)</td>
+                        <td>${formatValue(pessimistic.totalNetSavings)}</td>
+                        <td><strong class="${pessimistic.finalROI >= 0 ? 'positive' : 'negative'}">${pessimistic.finalROI.toFixed(0)}%</strong></td>
+                        <td>${pessimistic.breakEvenYear}</td>
+                    </tr>
+                    <tr class="expected-row">
+                        <td><strong>Expected</strong> (100% Effectiveness)</td>
+                        <td>${formatValue(expected.totalNetSavings)}</td>
+                        <td><strong class="${expected.finalROI >= 0 ? 'positive' : 'negative'}">${expected.finalROI.toFixed(0)}%</strong></td>
+                        <td>${expected.breakEvenYear}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Optimistic</strong> (150% Effectiveness)</td>
+                        <td>${formatValue(optimistic.totalNetSavings)}</td>
+                        <td><strong class="${optimistic.finalROI >= 0 ? 'positive' : 'negative'}">${optimistic.finalROI.toFixed(0)}%</strong></td>
+                        <td>${optimistic.breakEvenYear}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+/**
+ * Renders the Human Impact Chart (Burnout % and Turnover %)
+ */
+function renderHumanImpactChart(projectedData, orgDetails) {
+    const chartContainer = document.getElementById('roi-human-impact-chart-container');
+    if (!chartContainer) return;
+    
+    const canvas = chartContainer.querySelector('canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+	
+	if (roiHumanImpactChartInstance) {
+        roiHumanImpactChartInstance.destroy();
+    }
+    
+    // Get theme colors
+    const currentTheme = document.documentElement.getAttribute('data-color-scheme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const textColor = getComputedStyle(document.documentElement).getPropertyValue('--color-text-secondary').trim();
+    const gridColor = 'rgba(var(--color-gray-400-rgb), 0.1)';
+    const surfaceColor = getComputedStyle(document.documentElement).getPropertyValue('--color-surface').trim();
+    const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--color-border').trim();
+    const textPrimaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim();
+
+    const warningColor = (currentTheme === 'dark' ? 
+        getComputedStyle(document.documentElement).getPropertyValue('--color-orange-400') : 
+        getComputedStyle(document.documentElement).getPropertyValue('--color-orange-500')).trim();
+        
+    const errorColor = (currentTheme === 'dark' ? 
+        getComputedStyle(document.documentElement).getPropertyValue('--color-red-400') : 
+        getComputedStyle(document.documentElement).getPropertyValue('--color-red-500')).trim();
+
+    roiHumanImpactChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Start', ...projectedData.map(d => d.year)],
+            datasets: [
+                {
+                    label: 'Burnout Rate',
+                    data: [orgDetails.currentBurnoutRate, ...projectedData.map(d => d.burnoutRate)],
+                    borderColor: warningColor,
+                    backgroundColor: 'transparent',
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 4,
+                    pointBackgroundColor: warningColor,
+                },
+                {
+                    label: 'Turnover Rate',
+                    data: [orgDetails.currentTurnoverRate, ...projectedData.map(d => d.turnoverRate)],
+                    borderColor: errorColor,
+                    backgroundColor: 'transparent',
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 4,
+                    pointBackgroundColor: errorColor,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Projected Human Impact (Rates)',
+                    color: textPrimaryColor,
+                    font: { weight: '600', size: 16 }
+                },
+                legend: {
+                    position: 'top',
+                    align: 'end',
+                    labels: { color: textColor, usePointStyle: true, boxWidth: 8 }
+                },
+                tooltip: {
+                    backgroundColor: surfaceColor,
+                    titleColor: textPrimaryColor,
+                    bodyColor: textColor,
+                    borderColor: borderColor,
+                    borderWidth: 1,
+                    padding: 12,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) label += ': ';
+                            if (context.parsed.y !== null) {
+                                label += (context.parsed.y * 100).toFixed(1) + '%';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: textColor },
+                    grid: { color: gridColor, drawOnChartArea: false }
+                },
+                y: {
+                    position: 'left',
+                    ticks: { 
+                        color: textColor, 
+                        callback: (value) => (value * 100).toFixed(0) + '%' // Format as percentage
+                    },
+                    grid: { color: gridColor, borderDash: [5, 5] },
+                    title: {
+                        display: true,
+                        text: 'Rate (%)',
+                        color: textColor
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+/**
+ * Renders the Financial Impact Chart (Annual vs. Cumulative)
+ */
+function renderFinancialImpactChart(projectedData) {
+    const chartContainer = document.getElementById('roi-chart-container');
+    if (!chartContainer) return;
+    
+    const canvas = chartContainer.querySelector('canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
     
     // Destroy previous chart if it exists
     if (roiChartInstance) {
         roiChartInstance.destroy();
     }
+	
+	if (roiHumanImpactChartInstance) {
+        roiHumanImpactChartInstance.destroy();
+    }
 
     // --- ENHANCED STYLING ---
-    // Get color variables from CSS
     const successRGB = getComputedStyle(document.documentElement).getPropertyValue('--color-success-rgb').trim();
     const currentTheme = document.documentElement.getAttribute('data-color-scheme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
@@ -3347,34 +3624,31 @@ function calculateAndDisplayROI() {
     cumulativeGradient.addColorStop(1, `rgba(${primaryRGB}, 0)`);
     // --- END STYLING ENHANCEMENTS ---
 
-
     roiChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: projectedData.map(d => d.year),
             datasets: [
                 {
-                    // --- UPDATED: Bar Chart Styling ---
                     label: 'Annual Savings',
                     data: projectedData.map(d => d.annualSavings),
-                    backgroundColor: savingsGradient, // Use gradient
+                    backgroundColor: savingsGradient,
                     borderColor: `rgba(${successRGB}, 1)`,
                     borderWidth: 2,
-                    borderRadius: 8, // Rounded corners
+                    borderRadius: 8,
                     borderSkipped: false,
                     type: 'bar',
                     yAxisID: 'y'
                 },
                 {
-                    // --- UPDATED: Line Chart Styling ---
                     label: 'Cumulative Net Savings',
                     data: projectedData.map(d => d.cumulativeNetSavings),
-                    backgroundColor: cumulativeGradient, // Use gradient fill
-                    borderColor: `rgba(${primaryRGB}, 1)`, // Use themed color
+                    backgroundColor: cumulativeGradient,
+                    borderColor: `rgba(${primaryRGB}, 1)`,
                     type: 'line',
-                    fill: true, // Enable fill
-                    tension: 0.4, // Curved line
-                    pointBackgroundColor: `rgba(${primaryRGB}, 1)`, // Styled points
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: `rgba(${primaryRGB}, 1)`,
                     pointBorderColor: surfaceColor,
                     pointBorderWidth: 2,
                     pointRadius: 5,
@@ -3383,18 +3657,21 @@ function calculateAndDisplayROI() {
             ]
         },
         options: {
-            // --- UPDATED: Options Styling ---
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
+                title: {
+                    display: true,
+                    text: 'Projected Financial Impact (Savings)',
+                    color: textPrimaryColor,
+                    font: { weight: '600', size: 16 }
+                },
                 legend: {
                     position: 'top',
                     align: 'end',
                     labels: {
                         color: textColor,
-                        font: {
-                            weight: '500'
-                        },
+                        font: { weight: '500' },
                         usePointStyle: true,
                         boxWidth: 8
                     }
@@ -3411,9 +3688,7 @@ function calculateAndDisplayROI() {
                     callbacks: {
                         label: function(context) {
                             let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
+                            if (label) label += ': ';
                             if (context.parsed.y !== null) {
                                 label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(context.parsed.y);
                             }
@@ -3427,7 +3702,7 @@ function calculateAndDisplayROI() {
                     ticks: { color: textColor },
                     grid: { 
                         color: gridColor,
-                        drawOnChartArea: false, // Cleaner X-axis
+                        drawOnChartArea: false,
                     }
                 },
                 y: {
@@ -3443,7 +3718,7 @@ function calculateAndDisplayROI() {
                     },
                     grid: { 
                         color: gridColor,
-                        borderDash: [5, 5] // Dashed Y-axis
+                        borderDash: [5, 5]
                     },
                     title: {
                         display: true,
@@ -3454,27 +3729,8 @@ function calculateAndDisplayROI() {
             }
         }
     });
-
-    // --- 3. Render Recommendations ---
-    const recommendationsContainer = document.getElementById('roi-recommendations-container');
-    recommendationsContainer.innerHTML = `
-        <h5>Recommendations</h5>
-        <p>This ${orgDetails.projectionYears}-year projection shows a total net position of <strong>$${summary.totalNetSavings.toLocaleString()}</strong> and a total ROI of <strong>${summary.finalROI}%</strong>.</p>
-        <ul>
-            <li>The program is projected to become profitable by <strong>${summary.breakEvenYear}</strong>.</li>
-            <li>Sustained investment is key to compounding savings year-over-year.</li>
-        </ul>
-    `;
-	
-	// --- 4. Render Calculation Methodology Summary ---
-	const methodologyContainer = document.getElementById('roi-methodology-container');
-	if (methodologyContainer) {
-	  const methodologySummary = generateCalculationSummary(orgDetails, modelAssumptions, summary);
-	  methodologyContainer.innerHTML = methodologySummary;
-	}
-    
-    resultsContainer.style.display = 'block';
 }
+
 
 /*Generate a human-readable summary of the ROI calculation. Show inputs, methodology, and key outcomes*/
 function generateCalculationSummary(orgDetails, modelAssumptions, summary) {
@@ -3491,7 +3747,11 @@ function generateCalculationSummary(orgDetails, modelAssumptions, summary) {
   const {
     turnoverCostMultiplier,
     productivityLossRate,
-    maxEffectiveInvestment
+    maxEffectiveInvestment,
+    year1BurnoutReduction,
+    year1TurnoverReduction,
+    sustainBurnoutReduction,
+    sustainTurnoverReduction
   } = modelAssumptions;
 
   // Build the narrative summary
@@ -3501,7 +3761,7 @@ function generateCalculationSummary(orgDetails, modelAssumptions, summary) {
 	<div class="summary-section note">
 	  <p><strong>Note on Methodology:</strong> This model uses industry-standard assumptions 
 	  about wellness program effectiveness. Actual results depend on implementation quality 
-	  and organizational context.</p>
+	  and organizational context. All "Advanced Assumptions" can be modified.</p>
 	</div>
 	
     <div class="summary-section">
@@ -3530,53 +3790,46 @@ function generateCalculationSummary(orgDetails, modelAssumptions, summary) {
     </div>
 
     <div class="summary-section">
-      <h5>Impact Model</h5>
+      <h5>Impact Model (Based on Advanced Assumptions)</h5>
       <p>
-        The calculation models how wellness interventions reduce burnout and prevent turnover through two mechanisms:
+        The calculation models how wellness interventions reduce burnout and prevent turnover through two mechanisms, scaled by investment:
       </p>
       <ul>
-        <li><strong>Turnover Reduction:</strong> Each $${maxEffectiveInvestment} invested is modeled to prevent approximately 1 provider departure (based on industry benchmarks of program effectiveness)</li>
-        <li><strong>Productivity Impact:</strong> Reduced burnout improves provider productivity (${(productivityLossRate * 100).toFixed(0)}% productivity loss prevented per burnout reduction)</li>
+        <li><strong>Burnout Reduction:</strong> Model assumes a max <strong>${(year1BurnoutReduction * 100).toFixed(0)}%</strong> reduction in Year 1, and <strong>${(sustainBurnoutReduction * 100).toFixed(0)}%</strong> in subsequent years, scaled by investment.</li>
+        <li><strong>Turnover Reduction:</strong> Model assumes a max <strong>${(year1TurnoverReduction * 100).toFixed(0)}%</strong> reduction in Year 1, and <strong>${(sustainTurnoverReduction * 100).toFixed(0)}%</strong> in subsequent years, scaled by investment.</li>
+        <li><strong>Productivity Impact:</strong> Reduced burnout improves provider productivity (<strong>${(productivityLossRate * 100).toFixed(0)}%</strong> productivity loss prevented per burnout reduction).</li>
       </ul>
     </div>
 
-    <div class="summary-section">
+	<div class="summary-section">
       <h5>Projected Outcomes (${projectionYears}-Year Horizon)</h5>
       <ul>
         <li><strong>Total Gross Savings:</strong> $${summary.totalSavings.toLocaleString()} (from turnover prevention + productivity gains)</li>
         <li><strong>Less: Total Investment:</strong> $${summary.totalInvestment.toLocaleString()}</li>
-        <li><strong>Net Savings:</strong> $${summary.totalNetSavings.toLocaleString()}</li>
-        <li><strong>Return on Investment (ROI):</strong> ${summary.finalROI}%</li>
-        <li><strong>Profitability Achieved:</strong> Year ${summary.breakEvenYear}</li>
+        <li><strong>Net Savings:</strong> <strong class="${summary.totalNetSavings >= 0 ? 'positive' : 'negative'}">$${summary.totalNetSavings.toLocaleString()}</strong></li>
+        <li><strong>Return on Investment (ROI):</strong> <strong class="${summary.finalROI >= 0 ? 'positive' : 'negative'}">${summary.finalROI}%</strong></li>
+        <li><strong>Profitability Achieved:</strong> <strong>${summary.breakEvenYear}</strong></li>
+        <li><strong>Providers Retained (Cumulative):</strong> <strong class="positive">${summary.totalProvidersRetained.toLocaleString()}</strong></li>
+        <li><strong>Providers Averted from Burnout:</strong> <strong class="positive">${summary.totalBurnoutAverted.toLocaleString()}</strong></li>
       </ul>
     </div>
-
+	
     <div class="summary-section">
       <h5>Key Insights</h5>
       <ul>
-        <li>For every $1 invested in provider wellness, the organization expects to save $${((summary.totalSavings / summary.totalInvestment).toFixed(2))} in turnover and productivity costs</li>
-        <li>By Year ${summary.breakEvenYear}, the program becomes self-sustaining through cost avoidance alone</li>
-        <li>Over ${projectionYears} years, net savings of $${summary.totalNetSavings.toLocaleString()} represent <strong>${((summary.totalNetSavings / (avgSalary * numProviders)).toFixed(2))}x</strong> the average provider salary</li>
+        <li>For every $1 invested in provider wellness, the organization expects to save <strong>$${(summary.totalSavings / summary.totalInvestment).toFixed(2)}</strong> in turnover and productivity costs.</li>
+        <li>By <strong>${summary.breakEvenYear}</strong>, the program is projected to become self-sustaining through cost avoidance alone.</li>
+        <li>Over ${projectionYears} years, net savings of $${summary.totalNetSavings.toLocaleString()} represent the equivalent of <strong>${Math.abs((summary.totalNetSavings / avgSalary).toFixed(2))}</strong> average annual provider salaries.</li>
+		<li>This investment also projects a cumulative retention of <strong>${summary.totalProvidersRetained} providers</strong> who would have otherwise left.</li>
       </ul>
     </div>
 
-    <div class="summary-section">
-	  <h5>Model Limitations</h5>
-	  <ul>
-		<li>Does not account for non-financial benefits (improved provider satisfaction, community reputation, reduced medical errors)</li>
-		<li>Assumes linear relationship between investment and outcome reduction with diminishing returns at higher investments</li>
-		<li>Does not model external factors (market conditions, competitive hiring pressure, economic cycles)</li>
-		<li>Based on wellness program effectiveness benchmarks; results vary by implementation quality</li>
-	  </ul>
-	</div>
-
-	<div class="summary-section note">
-	  <p>
-		<strong>Note:</strong> These projections are based on conservative assumptions and industry benchmarks. 
-		Actual results will vary based on program implementation quality, provider engagement, and organizational context. 
-		This model can be adjusted to reflect your organization's specific challenges and capabilities.
-	  </p>
-	</div>
+    <div class="summary-section note">
+      <p>
+        <strong>Note:</strong> These projections are based on the adjustable assumptions in the "Advanced Model Assumptions" section. 
+        Actual results will vary based on program implementation quality, provider engagement, and organizational context.
+      </p>
+    </div>
   `;
 
   return summaryText;
