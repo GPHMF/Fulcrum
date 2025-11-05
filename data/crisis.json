@@ -1,9 +1,19 @@
 {
   "title": "Immediate Crisis Resources & Support",
   "subtitle": "If you or someone you know is in crisis, help is available 24/7",
-  "version": "2.0",
-  "last_updated": "2025-11-01",
+  "version": "2.2",
+  "last_updated": "2025-11-04",
   "introduction": "<div class=\"crisis-intro\"><h4>If you or someone you know is in crisis, help is available 24/7</h4><p class=\"urgent-message\">You are not alone. <strong>Crisis support is confidential, free, and always available.</strong> These resources are specifically designed to support healthcare professionals facing emotional distress, burnout, or crisis situations. Seeking help will not impact your professional standing or licensure.</p></div>",
+  "providerTypeMap": {
+    "nurses": "Nurses",
+    "physicians": "Physicians",
+    "pharmacists": "Pharmacists",
+    "therapists": "Therapists",
+    "medical_assistants": "Medical Assistants & PCTs",
+    "trainees": "Residents & Students",
+    "nurse_practitioners": "Nurse Practitioners",
+    "any": "All Providers"
+  },
   "resourceCategories": [
     {
       "id": "primary_emergency",
@@ -626,6 +636,11 @@
         "phone",
         "text"
       ],
+      "access_methods": [
+        "phone",
+        "text",
+        "web"
+      ],
       "availability": "24/7",
       "response_time": "immediate",
       "languages": [
@@ -646,6 +661,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "suicide_risk",
+        "general_crisis"
+      ],
+      "best_for": "Immediate 24/7 help for any suicidal or mental health crisis.",
       "html": "<div class='crisis-resource resource-emergency'><div class='resource-header'><h5>988 Suicide & Crisis Lifeline</h5></div><div class='contact-info'><span class='contact-label'>Call or text:</span><a href='tel:988' class='contact-link emergency'>988</a></div><div class='resource-description'><p>24/7 free confidential support for people in distress, prevention and crisis resources</p></div></div>"
     },
     {
@@ -662,6 +682,10 @@
       "contact_methods": [
         "text"
       ],
+      "access_methods": [
+        "text",
+        "web"
+      ],
       "availability": "24/7",
       "response_time": "<5 minutes",
       "languages": [
@@ -678,6 +702,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "general_crisis",
+        "suicide_risk"
+      ],
+      "best_for": "24/7 text-based support for any crisis.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Crisis Text Line</h5></div><div class='contact-info'><span class='contact-label'>Text</span> <strong class='text-keyword'>HOME</strong> to <a href='sms:741741' class='contact-link'>741741</a></div><div class='resource-description'><p>Connect with a trained crisis counselor via text message, available 24/7</p></div></div>"
     },
     {
@@ -694,6 +723,10 @@
       "contact_methods": [
         "text"
       ],
+      "access_methods": [
+        "text",
+        "web"
+      ],
       "availability": "24/7",
       "response_time": "<5 minutes",
       "languages": [
@@ -710,6 +743,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "moral_injury",
+        "general_crisis"
+      ],
+      "best_for": "Text support for healthcare workers facing burnout or stress.",
       "html": "<div class='crisis-resource resource-highlighted'><div class='resource-header'><h5>For the Frontlines</h5></div><div class='contact-info'><span class='contact-label'>Text</span> <strong class='text-keyword'>FRONTLINE</strong> to <a href='sms:741741' class='contact-link'>741741</a></div><div class='resource-description'><p>Crisis counseling specifically for healthcare professionals and first responders</p></div></div>"
     },
     {
@@ -726,6 +765,10 @@
       "contact_methods": [
         "phone"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "Monday-Friday 8 AM - 11 PM ET",
       "response_time": "immediate",
       "languages": [
@@ -737,6 +780,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "general_crisis",
+        "moral_injury"
+      ],
+      "best_for": "Peer support from a psychiatrist (for physicians & students).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Physician Support Line</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-888-409-0141' class='contact-link'>1-888-409-0141</a></div><div class='resource-description'><p>Confidential support line staffed by volunteer psychiatrists for physicians</p></div></div>"
     },
     {
@@ -752,6 +801,10 @@
       "web_url": "https://www.samhsa.gov/find-help/national-helpline",
       "contact_methods": [
         "phone"
+      ],
+      "access_methods": [
+        "phone",
+        "web"
       ],
       "availability": "24/7",
       "response_time": "immediate",
@@ -771,6 +824,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "substance_use",
+        "general_crisis"
+      ],
+      "best_for": "24/7 treatment referrals for substance use and mental health.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>SAMHSA National Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-662-4357' class='contact-link'>1-800-662-4357</a></div><div class='resource-description'><p>Free treatment referral and information service for mental health and substance use</p></div></div>"
     },
     {
@@ -786,6 +844,10 @@
       "web_url": "https://www.magellanhealth.com",
       "contact_methods": [
         "phone"
+      ],
+      "access_methods": [
+        "phone",
+        "web"
       ],
       "availability": "24/7",
       "response_time": "immediate",
@@ -803,6 +865,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "general_crisis",
+        "burnout"
+      ],
+      "best_for": "24/7 crisis support from counselors trained for HCP issues.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Magellan Health Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-327-7451' class='contact-link'>1-800-327-7451</a></div><div class='resource-description'><p>Mental health support and resources for healthcare professionals</p></div></div>"
     },
     {
@@ -820,6 +887,10 @@
         "web",
         "chat"
       ],
+      "access_methods": [
+        "chat",
+        "web"
+      ],
       "availability": "24/7",
       "response_time": "immediate",
       "languages": [
@@ -830,6 +901,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "general_crisis",
+        "moral_injury"
+      ],
+      "best_for": "24/7 AI-powered chat support specifically for nurses.",
       "html": "<div class='crisis-resource resource-highlighted'><div class='resource-header'><h5>National Nurses Crisis Center</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://nursecrisis.org' class='contact-link' target='_blank'>nursecrisis.org</a></div><div class='resource-description'><p>AI-powered support and crisis helpline specifically for nurses facing burnout and stress</p></div></div>"
     },
     {
@@ -847,6 +924,10 @@
         "web",
         "phone"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "24/7 matching with licensed professionals",
       "response_time": "<1 hour",
       "languages": [
@@ -856,13 +937,20 @@
         "nurses",
         "physicians",
         "pharmacists",
+        "therapists",
         "medical_assistants",
         "trainees",
         "nurse_practitioners"
       ],
       "cost": "free",
       "confidentiality_level": "full",
-      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Emotional PPE Project</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://emotionalppe.com' class='contact-link' target='_blank'>emotionalppe.com</a></div><div class='resource-description'><p>Free immediate mental health support connecting healthcare workers with licensed therapists</p></div></div>"
+      "situation": [
+        "burnout",
+        "moral_injury",
+        "general_crisis"
+      ],
+      "best_for": "Free, confidential therapy sessions with a licensed professional.",
+      "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Emotional PPE Project</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='httpshttps://emotionalppe.com' class='contact-link' target='_blank'>emotionalppe.com</a></div><div class='resource-description'><p>Free immediate mental health support connecting healthcare workers with licensed therapists</p></div></div>"
     },
     {
       "id": "peer-rx-med",
@@ -879,6 +967,10 @@
         "web",
         "phone"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "Multiple peer support groups weekly",
       "response_time": "<48 hours for 1-on-1",
       "languages": [
@@ -890,6 +982,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "colleague_concern"
+      ],
+      "best_for": "Ongoing peer-to-peer support groups and mentoring for physicians.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>PeerRxMed</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://peerxmed.org' class='contact-link' target='_blank'>peerxmed.org</a></div><div class='resource-description'><p>Free peer-to-peer support program for physicians and healthcare professionals</p></div></div>"
     },
     {
@@ -904,6 +1001,9 @@
       "text_number": null,
       "web_url": "https://dontclockout.org",
       "contact_methods": [
+        "web"
+      ],
+      "access_methods": [
         "web"
       ],
       "availability": "Weekly support groups via Zoom",
@@ -922,6 +1022,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "moral_injury",
+        "general_crisis"
+      ],
+      "best_for": "Free, anonymous weekly peer support groups via Zoom.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Don't Clock Out</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://dontclockout.org' class='contact-link' target='_blank'>dontclockout.org</a></div><div class='resource-description'><p>Free weekly support groups for healthcare professionals via Zoom with anonymous options</p></div></div>"
     },
     {
@@ -938,6 +1044,10 @@
       "contact_methods": [
         "phone"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "Monday-Friday 10 AM - 10 PM ET",
       "response_time": "<1 hour",
       "languages": [
@@ -946,10 +1056,18 @@
       "specialties": [
         "nurses",
         "physicians",
-        "therapists"
+        "pharmacists",
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "general_crisis"
+      ],
+      "best_for": "Peer support and mental health resource navigation (business hours).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>NAMI Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-950-6264' class='contact-link'>1-800-950-6264</a></div><div class='resource-description'><p>Confidential peer support and resources for mental health challenges for healthcare providers</p></div></div>"
     },
     {
@@ -964,6 +1082,9 @@
       "text_number": null,
       "web_url": "https://www.reddit.com/r/medicine",
       "contact_methods": [
+        "web"
+      ],
+      "access_methods": [
         "web"
       ],
       "availability": "24/7 online forums",
@@ -983,6 +1104,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "partial",
+      "situation": [
+        "burnout",
+        "colleague_concern"
+      ],
+      "best_for": "Anonymous online forums (e.g., Reddit) for peer discussion.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Online Communities</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><span class='contact-link'>Reddit, Facebook groups, provider forums</span></div><div class='resource-description'><p>Anonymous online communities for healthcare professionals to share experiences and advice</p></div></div>"
     },
     {
@@ -1000,6 +1126,10 @@
         "web",
         "phone"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "Varies by state program",
       "response_time": "<24 hours",
       "languages": [
@@ -1010,6 +1140,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "professional_discretion",
+      "situation": [
+        "substance_use",
+        "colleague_concern",
+        "burnout"
+      ],
+      "best_for": "Finding your state's confidential program (especially for substance use).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>State Physician Health Programs (PHPs)</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.fsphp.org/state-programs' class='contact-link' target='_blank'>Find your state program</a></div><div class='resource-description'><p>Confidential state-specific physician health programs with peer support and monitoring</p></div></div>"
     },
     {
@@ -1027,6 +1163,10 @@
         "phone",
         "web"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "24/7 answering service",
       "response_time": "24 hours",
       "languages": [
@@ -1038,6 +1178,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "professional_discretion",
+      "situation": [
+        "substance_use",
+        "colleague_concern",
+        "burnout"
+      ],
+      "best_for": "Confidential support for California physicians (substance use, mental health).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>California Physician Health Program</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-911-0556' class='contact-link'>1-800-911-0556</a></div><div class='resource-description'><p>Confidential support for California physicians experiencing mental health or substance use issues</p></div></div>"
     },
     {
@@ -1055,6 +1201,10 @@
         "phone",
         "web"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "Business hours + emergency line",
       "response_time": "24 hours",
       "languages": [
@@ -1065,6 +1215,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "professional_discretion",
+      "situation": [
+        "substance_use",
+        "colleague_concern",
+        "burnout"
+      ],
+      "best_for": "Confidential support for New York physicians (substance use, mental health).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>New York Physician Health Program</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-212-971-6393' class='contact-link'>1-212-971-6393</a></div><div class='resource-description'><p>Confidential peer support for New York physicians with health issues</p></div></div>"
     },
     {
@@ -1082,6 +1238,10 @@
         "phone",
         "web"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "24/7 answering service",
       "response_time": "24 hours",
       "languages": [
@@ -1093,6 +1253,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "professional_discretion",
+      "situation": [
+        "substance_use",
+        "colleague_concern",
+        "burnout"
+      ],
+      "best_for": "Confidential support for Texas physicians (substance use, mental health).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Texas Physician Health Program</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-855-632-2574' class='contact-link'>1-855-632-2574</a></div><div class='resource-description'><p>Confidential support for Texas physicians with substance use and mental health challenges</p></div></div>"
     },
     {
@@ -1109,6 +1275,11 @@
       "contact_methods": [
         "phone",
         "text"
+      ],
+      "access_methods": [
+        "phone",
+        "text",
+        "web"
       ],
       "availability": "24/7",
       "response_time": "immediate",
@@ -1128,6 +1299,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "suicide_risk",
+        "general_crisis"
+      ],
+      "best_for": "Connecting to local, state-specific crisis responders via 988.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>State Crisis Lines via 988</h5></div><div class='contact-info'><span class='contact-label'>Call or text:</span><a href='tel:988' class='contact-link'>988</a></div><div class='resource-description'><p>State-specific crisis services connected through 988 Lifeline</p></div></div>"
     },
     {
@@ -1145,6 +1321,10 @@
         "web",
         "phone"
       ],
+      "access_methods": [
+        "phone",
+        "web"
+      ],
       "availability": "Training programs and ongoing support",
       "response_time": "Same-day or next day",
       "languages": [
@@ -1156,6 +1336,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "colleague_concern",
+        "general_crisis"
+      ],
+      "best_for": "Peer support and psychological first aid for residents/trainees.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>RISE Peer Support Program</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.risepeerprogram.com' class='contact-link' target='_blank'>risepeerprogram.com</a></div><div class='resource-description'><p>Peer responder program providing psychological first aid and emotional support</p></div></div>"
     },
     {
@@ -1170,6 +1356,9 @@
       "text_number": null,
       "web_url": "https://www.theschwartzcenter.org/programs/schwartz-rounds/",
       "contact_methods": [
+        "web"
+      ],
+      "access_methods": [
         "web"
       ],
       "availability": "Monthly or quarterly scheduled sessions",
@@ -1188,6 +1377,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "moral_injury",
+        "colleague_concern"
+      ],
+      "best_for": "Scheduled group discussions at your hospital about emotional challenges.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Schwartz Rounds</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.theschwartzcenter.org/programs/schwartz-rounds/' class='contact-link' target='_blank'>Find at your hospital</a></div><div class='resource-description'><p>Monthly protected time for healthcare workers to discuss challenges in patient care</p></div></div>"
     },
     {
@@ -1204,19 +1399,31 @@
       "contact_methods": [
         "web"
       ],
+      "access_methods": [
+        "web"
+      ],
       "availability": "Online resources and referrals 24/7",
       "response_time": "<24 hours for referrals",
       "languages": [
         "English"
       ],
       "specialties": [
-        "physicians",
         "nurses",
+        "physicians",
         "pharmacists",
-        "therapists"
+        "therapists",
+        "medical_assistants",
+        "trainees",
+        "nurse_practitioners"
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "suicide_risk",
+        "burnout",
+        "moral_injury"
+      ],
+      "best_for": "Advocacy, peer support directories, and destigmatization resources.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Dr. Lorna Breen Heroes' Foundation</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://drlornabreen.org/' class='contact-link' target='_blank'>drlornabreen.org</a></div><div class='resource-description'><p>Foundation supporting healthcare workers through peer support and removing stigma</p></div></div>"
     },
     {
@@ -1231,6 +1438,10 @@
       "text_number": null,
       "web_url": null,
       "contact_methods": [
+        "phone",
+        "web"
+      ],
+      "access_methods": [
         "phone",
         "web"
       ],
@@ -1252,6 +1463,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "general_crisis",
+        "burnout",
+        "substance_use"
+      ],
+      "best_for": "Free, confidential counseling provided by your employer.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Employee Assistance Program (EAP)</h5></div><div class='contact-info'><span class='contact-label'>Info:</span><span class='contact-link'>Check your employer benefits guide</span></div><div class='resource-description'><p>Employer-sponsored confidential counseling and mental health services available 24/7</p></div></div>"
     },
     {
@@ -1266,6 +1483,10 @@
       "text_number": null,
       "web_url": null,
       "contact_methods": [
+        "phone",
+        "in-person"
+      ],
+      "access_methods": [
         "phone",
         "in-person"
       ],
@@ -1287,6 +1508,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "moral_injury",
+        "general_crisis",
+        "burnout"
+      ],
+      "best_for": "In-hospital spiritual and emotional support (for moral injury/grief).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Hospital Chaplaincy Services</h5></div><div class='contact-info'><span class='contact-label'>Contact:</span><span class='contact-link'>Your hospital chaplaincy office</span></div><div class='resource-description'><p>Spiritual and emotional support from hospital chaplaincy teams available 24/7</p></div></div>"
     },
     {
@@ -1301,6 +1528,10 @@
       "text_number": null,
       "web_url": null,
       "contact_methods": [
+        "phone",
+        "in-person"
+      ],
+      "access_methods": [
         "phone",
         "in-person"
       ],
@@ -1320,6 +1551,11 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "general_crisis",
+        "burnout"
+      ],
+      "best_for": "Confidential mental health support via your institution's Occ Health.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Occupational Health & Wellness Services</h5></div><div class='contact-info'><span class='contact-label'>Contact:</span><span class='contact-link'>Your institution occupational health</span></div><div class='resource-description'><p>Workplace health services with confidential mental health support and wellness programs</p></div></div>"
     },
     {
@@ -1335,6 +1571,10 @@
       "web_url": "https://www.samhsa.gov/find-help/disaster-distress-helpline",
       "contact_methods": [
         "phone"
+      ],
+      "access_methods": [
+        "phone",
+        "web"
       ],
       "availability": "24/7",
       "response_time": "immediate",
@@ -1353,6 +1593,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "general_crisis",
+        "burnout",
+        "moral_injury"
+      ],
+      "best_for": "24/7 crisis counseling for disaster-related distress (e.g., MCI).",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>SAMHSA Disaster Distress Helpline</h5></div><div class='contact-info'><span class='contact-label'>Call:</span><a href='tel:1-800-985-5990' class='contact-link'>1-800-985-5990</a></div><div class='resource-description'><p>Crisis counseling and support for those experiencing distress related to disasters</p></div></div>"
     },
     {
@@ -1367,6 +1613,11 @@
       "text_number": null,
       "web_url": "https://findtreatment.gov",
       "contact_methods": [
+        "phone",
+        "web",
+        "in-person"
+      ],
+      "access_methods": [
         "phone",
         "web",
         "in-person"
@@ -1389,6 +1640,11 @@
       ],
       "cost": "sliding_scale",
       "confidentiality_level": "full",
+      "situation": [
+        "general_crisis",
+        "suicide_risk"
+      ],
+      "best_for": "Finding local community mental health centers and in-person crisis teams.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Regional Mental Health Crisis Services</h5></div><div class='contact-info'><span class='contact-label'>Find Local:</span><a href='https://findtreatment.gov' class='contact-link' target='_blank'>findtreatment.gov</a></div><div class='resource-description'><p>Community mental health centers with crisis intervention and emergency services</p></div></div>"
     },
     {
@@ -1405,6 +1661,9 @@
       "contact_methods": [
         "web"
       ],
+      "access_methods": [
+        "web"
+      ],
       "availability": "Online resources 24/7",
       "response_time": "Variable",
       "languages": [
@@ -1415,6 +1674,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "moral_injury",
+        "colleague_concern"
+      ],
+      "best_for": "A national directory of wellness and peer support for physicians.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Physician Wellness Network</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://physicianwellness.network' class='contact-link' target='_blank'>physicianwellness.network</a></div><div class='resource-description'><p>National network connecting physicians with wellness resources and peer support</p></div></div>"
     },
     {
@@ -1431,6 +1696,9 @@
       "contact_methods": [
         "web"
       ],
+      "access_methods": [
+        "web"
+      ],
       "availability": "Online 24/7, groups weekly",
       "response_time": "Immediate online, groups weekly",
       "languages": [
@@ -1441,6 +1709,12 @@
       ],
       "cost": "free",
       "confidentiality_level": "full",
+      "situation": [
+        "burnout",
+        "moral_injury",
+        "colleague_concern"
+      ],
+      "best_for": "A national directory of peer support and resources for nurses.",
       "html": "<div class='crisis-resource resource-standard'><div class='resource-header'><h5>Nurse Support Network</h5></div><div class='contact-info'><span class='contact-label'>Web:</span><a href='https://www.nursesupport.network' class='contact-link' target='_blank'>nursesupport.network</a></div><div class='resource-description'><p>Specialized peer support and resource network for nurses facing burnout</p></div></div>"
     }
   ]
