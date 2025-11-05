@@ -1356,11 +1356,6 @@ function initCrisisSection() {
   
   let html = '';
   
-  // Add banner
-  if (crisisData.banner?.html) {
-    html += crisisData.banner.html;
-  }
-  
   // Add introduction
   if (crisisData.introduction) {
     html += crisisData.introduction;
@@ -1388,16 +1383,31 @@ function initCrisisSection() {
   // Attach event listeners
   attachCrisisEventListeners();
   
-  // Load initial resource view (all resources, primary category)
-  displayResourcesByCategory('primary_emergency');
+  // Load initial resource view (all resources)
+  displayResourcesByCategory('all');
 }
 
 // Render category navigation tabs
+
 function renderCrisisCategoryNav() {
-  if (!crisisData.resourceCategories) return '';
+  if (!crisisData.resourceCategories || !crisisData.resources) return '';
   
+  // Calculate total resource count
+  const totalResources = crisisData.resources.length;
+
   let html = '<div class="crisis-category-nav"><div class="category-tabs">';
   
+  // Manually prepend the "All Resources" tab
+  html += `
+    <button class="category-tab active" 
+            data-category="all" 
+            style="--accent-color: var(--color-primary)">
+      <span class="tab-icon">${getIconElement('all')}</span>
+      <span class="tab-label">All Resources</span>
+      <span class="tab-count">${totalResources}</span>
+    </button>
+  `;
+
   crisisData.resourceCategories.forEach(category => {
     html += `
       <button class="category-tab" 
@@ -1417,24 +1427,53 @@ function renderCrisisCategoryNav() {
 // Render crisis filtering UI
 function renderCrisisFilterUI() {
   if (!crisisData.resourceFilters?.filters) return '';
+
+  // Get the filter definitions from JSON
+  const filters = crisisData.resourceFilters.filters;
+  const situationFilter = filters.find(f => f.name === 'situation');
+  const providerFilter = filters.find(f => f.name === 'provider_type');
+  const accessFilter = filters.find(f => f.name === 'access_method');
+
+  // Helper to create <option> tags
+  const createOptions = (filter, defaultLabel) => {
+    if (!filter) return '';
+    let optionsHtml = `<option value="all">${defaultLabel}</option>`;
+    optionsHtml += filter.options.map(option => 
+      `<option value="${option}">${formatFilterLabel(option)}</option>`
+    ).join('');
+    return optionsHtml;
+  };
+
+  const html = `
+    <div class="crisis-filters">
+      <div class="filter-controls" style="grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+        
+        <div class="filter-group">
+          <label for="filter-situation">${situationFilter.label}</label>
+          <select id="filter-situation" class="form-control" data-filter="situation">
+            ${createOptions(situationFilter, 'All Situations')}
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="filter-provider_type">${providerFilter.label}</label>
+          <select id="filter-provider_type" class="form-control" data-filter="provider_type">
+            ${createOptions(providerFilter, 'All Roles')}
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-access_method">${accessFilter.label}</label>
+          <select id="filter-access_method" class="form-control" data-filter="access_method">
+            ${createOptions(accessFilter, 'All Methods')}
+          </select>
+        </div>
+        
+      </div>
+      <button class="filter-reset" style="margin-top: 16px;">Clear Filters</button>
+    </div>
+  `;
   
-  let html = '<div class="crisis-filters"><div class="filter-controls">';
-  
-  crisisData.resourceFilters.filters.forEach(filter => {
-    html += `<div class="filter-group filter-${filter.name}">
-      <label>${filter.label}</label>
-      <div class="filter-options">`;
-    
-    filter.options.forEach(option => {
-      html += `<button class="filter-option" data-filter="${filter.name}" data-value="${option}">
-        ${formatFilterLabel(option)}
-      </button>`;
-    });
-    
-    html += '</div></div>';
-  });
-  
-  html += '<button class="filter-reset">Clear Filters</button></div></div>';
   return html;
 }
 
@@ -1468,7 +1507,14 @@ function renderQuickAccessGuidesSection() {
 function displayResourcesByCategory(categoryId) {
   if (!crisisData?.resources) return;
   
-  const filtered = crisisData.resources.filter(r => r.category_id === categoryId);
+  let filtered = [];
+  
+  if (categoryId === 'all') {
+    filtered = [...crisisData.resources];
+  } else {
+    filtered = crisisData.resources.filter(r => r.category_id === categoryId);
+  }
+  
   renderCrisisResourceCards(filtered, categoryId);
   
   // Update active tab
@@ -1519,33 +1565,37 @@ function filterCrisisResourcesByAccessMethod(accessMethod) {
 
 // Apply multiple filters
 function applyCrisisFilters() {
+  // Read values directly from the <select> dropdowns
   const activeFilters = {
-    provider_type: document.querySelector('[data-filter="provider_type"].active')?.dataset.value,
-    access_method: document.querySelector('[data-filter="access_method"].active')?.dataset.value,
-    situation: document.querySelector('[data-filter="situation"].active')?.dataset.value,
-    cost: document.querySelector('[data-filter="cost"].active')?.dataset.value,
-    availability: document.querySelector('[data-filter="availability"].active')?.dataset.value
+    situation: document.getElementById('filter-situation')?.value,
+    provider_type: document.getElementById('filter-provider_type')?.value,
+    access_method: document.getElementById('filter-access_method')?.value,
   };
   
   let filtered = [...(crisisData?.resources || [])];
   
   // Apply each filter
-  if (activeFilters.provider_type) {
+  if (activeFilters.situation && activeFilters.situation !== 'all') {
+    filtered = filtered.filter(r => r.situation?.includes(activeFilters.situation));
+  }
+  
+  if (activeFilters.provider_type && activeFilters.provider_type !== 'all') {
     filtered = filtered.filter(r => r.specialties?.includes(activeFilters.provider_type));
   }
   
-  if (activeFilters.access_method) {
+  if (activeFilters.access_method && activeFilters.access_method !== 'all') {
     filtered = filtered.filter(r => r.access_methods?.includes(activeFilters.access_method));
   }
   
-  if (activeFilters.cost) {
-    filtered = filtered.filter(r => r.cost === activeFilters.cost);
-  }
+  // Get the currently active CATEGORY TAB (e.g., "Primary Emergency")
+  const activeCategory = document.querySelector('.category-tab.active')?.dataset.category;
   
-  if (activeFilters.availability) {
-    filtered = filtered.filter(r => r.availability === activeFilters.availability);
+  // First, filter by the active tab (unless it's "all")
+  if (activeCategory && activeCategory !== 'all') {
+      filtered = filtered.filter(r => r.category_id === activeCategory);
   }
-  
+
+  // Then, apply the dropdown filters
   renderCrisisResourceCards(filtered, 'filtered');
 }
 
@@ -1569,34 +1619,43 @@ function renderCrisisResourceCards(resources, containerId = 'default') {
   resources.forEach(resource => {
     const contactInfo = buildContactInfo(resource);
     const metadata = buildResourceMetadata(resource);
-    
+    const specialties = (resource.specialties && resource.specialties.length > 0)
+                          ? resource.specialties.map(spec => crisisData.providerTypeMap[spec] || spec).join(', ')
+                          : (crisisData.providerTypeMap['any'] || 'All Providers');
+
     html += `
       <div class="crisis-card ${resource.type}" data-resource="${resource.id}">
+        
         <div class="card-header">
+          <span class="resource-type-badge">${resource.type}</span>
           <div class="card-title-row">
             <h3>${resource.name}</h3>
-            <span class="resource-type-badge">${resource.type}</span>
           </div>
-          <p class="card-description">${resource.description}</p>
+          ${resource.best_for ? `
+            <div class="card-best-for">
+              <strong>Best for:</strong> ${resource.best_for}
+            </div>
+          ` : ''}
         </div>
         
         <div class="card-contact">
-          ${contactInfo}
+          ${contactInfo} 
         </div>
         
-        <div class="card-metadata">
-          ${metadata}
-        </div>
-        
-        <div class="card-specialties">
-          <strong>For:</strong> ${(resource.specialties || []).join(', ') || 'All providers'}
-        </div>
-        
-        <div class="card-actions">
-		  ${resource.web_url ? `<a href="${resource.web_url}" target="_blank" class="btn-primary">Visit Site</a>` : ''}
-		</div>
-      </div>
-    `;
+        <details class="card-details-toggle">
+          <summary>View Details</summary>
+          <div class="card-details-content">
+            <div class="card-metadata">
+              ${metadata}
+            </div>
+            <div class="card-specialties">
+              <strong>For:</strong> ${specialties}
+            </div>
+            <p class="card-description" style="margin-bottom: 0;">${resource.description}</p>
+          </div>
+        </details>
+
+      </div> `;
   });
   
   html += '</div>';
@@ -1624,17 +1683,15 @@ function buildContactInfo(resource) {
     }
   }
   
-  if (resource.contact_methods?.includes('web') && resource.web_url) {
-    html += `<div class="contact-method">
-      <strong>Web:</strong>
-      <a href="${resource.web_url}" target="_blank" class="contact-link">${extractDomain(resource.web_url)}</a>
-    </div>`;
-  }
-  
   if (resource.contact_methods?.includes('chat')) {
     html += `<div class="contact-method">
       <strong>Chat:</strong> Available online
     </div>`;
+  }
+  
+  if (resource.web_url) {
+    const marginTop = (html !== '') ? 'margin-top: 16px;' : '';
+    html += `<a href="${resource.web_url}" target="_blank" class="btn-primary" style="width: 100%; text-decoration: none; ${marginTop}">Visit Site</a>`;
   }
   
   return html;
@@ -1829,37 +1886,26 @@ function renderCrisisIndicators() {
 
 // Initialize all crisis filter UI interactions
 function initCrisisFilters() {
-  // Category tabs
+  // Category tabs (This logic stays the same)
   document.querySelectorAll('.category-tab').forEach(tab => {
     tab.addEventListener('click', () => {
-      displayResourcesByCategory(tab.dataset.category);
+      // Set the active tab
+      document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      // Clear dropdowns and apply filters (which will now just filter by tab)
+      clearCrisisFilters(false); // false = don't reset the tab
     });
   });
   
-  // Filter options
-  document.querySelectorAll('.filter-option').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const filterName = this.dataset.filter;
-      const filterValue = this.dataset.value;
-      
-      // Toggle active state
-      document.querySelectorAll(`[data-filter="${filterName}"]`).forEach(b => {
-        b.classList.remove('active');
-      });
-      this.classList.add('active');
-      
-      // Apply filters based on filter type
-      if (filterName === 'provider_type') {
-        filterCrisisResourcesByProvider(filterValue);
-      } else if (filterName === 'access_method') {
-        filterCrisisResourcesByAccessMethod(filterValue);
-      } else {
-        applyCrisisFilters();
-      }
+  // Filter dropdowns
+  document.querySelectorAll('.crisis-filters select').forEach(select => {
+    select.addEventListener('change', () => {
+      applyCrisisFilters();
     });
   });
   
-  // Guide expand buttons
+  // Guide expand buttons (This logic stays the same)
   document.querySelectorAll('.expand-guide').forEach(btn => {
     btn.addEventListener('click', () => {
       renderQuickAccessGuides(btn.dataset.guide);
@@ -1868,8 +1914,7 @@ function initCrisisFilters() {
   
   // Reset filters button
   document.querySelector('.filter-reset')?.addEventListener('click', () => {
-    document.querySelectorAll('.filter-option').forEach(b => b.classList.remove('active'));
-    displayResourcesByCategory('primary_emergency');
+    clearCrisisFilters(true); // true = reset everything, including tab
   });
 }
 
@@ -1877,10 +1922,27 @@ function attachCrisisEventListeners() {
   initCrisisFilters();
 }
 
-function clearCrisisFilters() {
-  document.querySelectorAll('.filter-option').forEach(b => b.classList.remove('active'));
-  if (crisisData) {
-    renderCrisisResourceCards(crisisData.resources, 'all');
+function clearCrisisFilters(resetTab = true) {
+  // Reset dropdowns to their first option ("all")
+  const situationFilter = document.getElementById('filter-situation');
+  if (situationFilter) situationFilter.value = 'all';
+
+  const providerTypeFilter = document.getElementById('filter-provider_type');
+  if (providerTypeFilter) providerTypeFilter.value = 'all';
+
+  const accessMethodFilter = document.getElementById('filter-access_method');
+  if (accessMethodFilter) accessMethodFilter.value = 'all';
+
+  if (resetTab) {
+    // Set "All Resources" as the default active tab
+    document.querySelectorAll('.category-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.category === 'all');
+    });
+    // Display all resources
+    displayResourcesByCategory('all');
+  } else {
+    // Just re-run the filters based on the currently active tab
+    applyCrisisFilters();
   }
 }
 
@@ -1955,6 +2017,7 @@ function shareResourceWithColleague(resourceId) {
 // Get icon element by icon name
 function getIconElement(iconName) {
   const iconMap = {
+	'all': '🗂️',
     'alert-circle': '🚨',
     'stethoscope': '🩺',
     'map-pin': '📍',
