@@ -42,7 +42,7 @@ The entire application is a **fast, responsive, and accessible Single Page Appli
 |-----------|-------|
 | **Provider Roles** | 8 (Physicians, Residents, NPs, PAs, Nurses, Pharmacists, Therapists, MAs) |
 | **Organizational Strategies** | 68 across 8 leadership categories (Critical/High/Medium priority) |
-| **Crisis Resources** | 40+ with multi-dimensional filtering (type, access method, cost, severity) |
+| **Crisis Resources** | 25+ with multi-dimensional filtering (type, access method, situation, etc.) |
 | **Total Structured Data** | 423.6 KB across 3 JSON architectures |
 | **Search Coverage** | 3 independent data sources with unified ranking |
 
@@ -167,11 +167,10 @@ Fulcrum/
 
 ### Crisis Resources (75 KB)
 - **5-tier resource categories** (Primary Emergency, Specialized Provider, Regional, Peer Support, Workplace)
-- **40+ curated resources** with filtering on:
-  - Availability (24/7 vs business hours)
+- **25+ curated resources** with filtering on:
+  - Situation (burnout, cuicide crisis, substance-abuse etc.)
   - Access method (phone, text, chat, web, in-person)
   - Provider specialty
-  - Cost tier
 - **Quick-access crisis guides** with step-by-step actions
 - **Severity indicators** (Critical/High/Moderate) with immediate next steps
 
