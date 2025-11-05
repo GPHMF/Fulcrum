@@ -193,6 +193,10 @@ Fulcrum/
 - [x] Significantly reworked the ROI Calculator logic to incorporate separate Human-Impact and Financial-Impact Metrics (now it's 800+ lines of code)
 - [x] Minor bug-fixes in Organizational Strategies section
 
+**V2.2 Update:**
+- [x] Improve crisis card filtering logic
+- [x] Modify the crisis cards to account for the improved filtering
+
 **Future Vision:**
 - [ ] Complete Mobile View implementation to improve layout on mobile devices (priority)
 - [ ] Make new additions (v2) compliant with Accessibility Guidelines
